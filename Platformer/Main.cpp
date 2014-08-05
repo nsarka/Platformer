@@ -1,7 +1,7 @@
 #include "SDL.h"
 #include "GameSystem.h"
 
-GameSystem* gamesys = 0; //tes
+GameSystem* gamesys = 0; //te
 
 int main(int arc, char* args[])
 {
