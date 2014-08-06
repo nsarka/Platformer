@@ -19,7 +19,7 @@ GameSystem::GameSystem()
 	//Test, draw Twoeyes
 	twoEyes = new Player();
 	gameObjects.push_back(twoEyes);
-	twoEyes->Load("Player 1", "Assets/Player/p1_stand.png", "twoEyes", 100, 100, 66, 92, pRenderer);
+	twoEyes->Load("Player 1", "Assets/Player/p1_spritesheet.png", "twoEyes", 100, 100, 72, 97, pRenderer);
 }
 
 //System destructor, clean up SDL
@@ -78,12 +78,12 @@ void GameSystem::Update()
 
 void GameSystem::Print(std::string Message)
 {
-	log << "(" << SDL_GetTicks() / 1000 << ") " << Message << "\n";
-	std::cout << "(" << SDL_GetTicks() / 1000 << ") " << Message << "\n";
+	//log << "(" << SDL_GetTicks() / 1000 << ") " << Message << std::endl;
+	std::cout << "(" << SDL_GetTicks() / 1000 << ") " << Message << std::endl;
 }
 
 void GameSystem::PrintSDLError()
 {
-	log << "(" << SDL_GetTicks() / 1000 << ") " << "Error: " << std::string(SDL_GetError()) << "\n";
-	std::cout << "(" << SDL_GetTicks() / 1000 << ") " << "Error: " << std::string(SDL_GetError()) << "\n";
+	//log << "(" << SDL_GetTicks() / 1000 << ") " << "Error: " << std::string(SDL_GetError()) << std::endl;
+	std::cout << "(" << SDL_GetTicks() / 1000 << ") " << "Error: " << std::string(SDL_GetError()) << std::endl;
 }

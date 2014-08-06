@@ -15,6 +15,9 @@ protected:
 	std::string objClassName;
 	std::string textureID;
 
+	int srcX = 0;
+	int srcY = 0;
+
 	int posX;
 	int posY;
 

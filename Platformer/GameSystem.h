@@ -8,6 +8,7 @@
 #include <vector>
 
 
+
 class GameSystem
 {
 public:
@@ -21,9 +22,8 @@ public:
 	void Render();
 	void Update();
 
-	//Print error to log (and console in debug mode)
-	void Print(std::string Message);
-	void PrintSDLError();
+	static void PrintSDLError();
+	static void Print(std::string message);
 
 private:
 	SDL_Window* pWindow;

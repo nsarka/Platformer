@@ -9,7 +9,8 @@ public:
 	~TextureManager() {}
 
 	bool LoadTexture(std::string fileName, std::string id, SDL_Renderer* pRenderer);
-	void DrawTexture(std::string id, int x, int y, int width, int height, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void DrawTexture(std::string id, int destX, int destY, int width, int height, int srcX, int srcY, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
+
 
 	static TextureManager* Instance()
 	{
