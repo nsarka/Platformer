@@ -5,7 +5,7 @@ Platformer
 
 Art/music courtesy http://open.commonly.cc/
 Rendering https://www.libsdl.org/
-Physics http://box2d.org/
+Physics (soon) http://box2d.org/
 
 
 Copyright (c) 2014 Nick Sarka
