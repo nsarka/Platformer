@@ -1,7 +1,7 @@
 #include "SDL.h"
 #include "GameSystem.h"
 
-GameSystem* gamesys = 0; //test, on surface
+GameSystem* gamesys = 0;
 
 int main(int arc, char* args[])
 {
