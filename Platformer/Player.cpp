@@ -5,7 +5,7 @@
 
 void Player::Update()
 {
-
+	//update frame
 }
 
 void Player::Draw(SDL_Renderer* pRenderer)
