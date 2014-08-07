@@ -96,12 +96,13 @@
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameSystem.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="Textures.h" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="Assets\spritesheet.xml" />
+    <Xml Include="Assets\spritesheet.xml">
+      <SubType>Designer</SubType>
+    </Xml>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

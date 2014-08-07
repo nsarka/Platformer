@@ -10,6 +10,6 @@ void GameObject::Load(std::string className, std::string path, std::string textu
 
 	posX = x;
 	posY = y;
-	objWidth = framewidth;
-	objHeight = frameheight;
+	objFrame.w = framewidth;
+	objFrame.h = frameheight;
 }

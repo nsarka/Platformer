@@ -82,6 +82,13 @@ void GameSystem::Print(std::string Message)
 	std::cout << "(" << SDL_GetTicks() / 1000 << ") " << Message << std::endl;
 }
 
+void GameSystem::Print(int Message)
+{
+	//log << "(" << SDL_GetTicks() / 1000 << ") " << Message << std::endl;
+	std::cout << "(" << SDL_GetTicks() / 1000 << ") " << Message << std::endl;
+}
+
+
 void GameSystem::PrintSDLError()
 {
 	//log << "(" << SDL_GetTicks() / 1000 << ") " << "Error: " << std::string(SDL_GetError()) << std::endl;

@@ -15,12 +15,8 @@ protected:
 	std::string objClassName;
 	std::string textureID;
 
-	int srcX = 0;
-	int srcY = 0;
+	SDL_Rect objFrame;
 
 	int posX;
 	int posY;
-
-	int objWidth;
-	int objHeight;
 };

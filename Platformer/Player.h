@@ -1,5 +1,6 @@
 #pragma once
 #include "GameObject.h"
+#include "SpriteSheet.h"
 #include "SDL.h"
 #include <string>
 
@@ -7,7 +8,7 @@
 class Player : public GameObject
 {
 public:
-	Player() {};
+	Player();
 	~Player() {};
 
 	void Update();
@@ -15,5 +16,6 @@ public:
 
 private:
 	std::string playerName;
+	SpriteSheet* playerSheet = 0;
 };
 

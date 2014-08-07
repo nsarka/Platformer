@@ -24,6 +24,7 @@ public:
 
 	static void PrintSDLError();
 	static void Print(std::string message);
+	static void Print(int message);
 
 private:
 	SDL_Window* pWindow;
