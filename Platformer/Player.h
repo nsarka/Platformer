@@ -20,6 +20,7 @@ private:
 	std::string playerName;
 	bool flip = false;
 
+	//Array so Player::Update() knows which frames are the ones for walking
 	std::array<std::string, 11> walkFrames
 	{
 		{

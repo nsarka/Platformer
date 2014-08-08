@@ -41,7 +41,6 @@ SDL_Rect SpriteSheet::GetFrame(std::string FrameName)
 	{
 		return frameMap[FrameName];
 	}
-	
 }
 
 void SpriteSheet::PrintSheet()

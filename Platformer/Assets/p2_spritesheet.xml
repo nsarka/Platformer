@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<spritesheet>
+
+  <!-- Spritesheet frames, xpos, ypos, width, height -->
+  <p2_duck xpos="355" ypos="95" width="67" height="72"/>
+  <p2_front xpos="0" ypos="190" width="66" height="92"/>
+  <p2_hurt xpos="426" ypos="0" width="67" height="92"/>
+  <p2_jump xpos="423" ypos="95" width="66" height="94"/>
+  <p2_stand xpos="67" ypos="190" width="66" height="92"/>
+  <p2_walk01 xpos="0" ypos="0" width="70" height="94"/>
+  <p2_walk02 xpos="71" ypos="0" width="70" height="94"/>
+  <p2_walk03 xpos="142" ypos="0" width="70" height="94"/>
+  <p2_walk04 xpos="0" ypos="95" width="70" height="94"/>
+  <p2_walk05 xpos="71" ypos="95" width="70" height="94"/>
+  <p2_walk06 xpos="142" ypos="95" width="70" height="94"/>
+  <p2_walk07 xpos="213" ypos="0" width="70" height="94"/>
+  <p2_walk08 xpos="284" ypos="0" width="70" height="94"/>
+  <p2_walk09 xpos="213" ypos="95" width="70" height="94"/>
+  <p2_walk10 xpos="355" ypos="0" width="70" height="94"/>
+  <p2_walk11 xpos="284" ypos="95" width="70" height="94"/>
+
+</spritesheet>

@@ -13,7 +13,7 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="XML sheets">
+    <Filter Include="Spritesheets">
       <UniqueIdentifier>{8bf6a5ab-deec-4e05-8f29-990f11246867}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -56,7 +56,13 @@
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Assets\p1_spritesheet.xml">
-      <Filter>XML sheets</Filter>
+      <Filter>Spritesheets</Filter>
+    </Xml>
+    <Xml Include="Assets\p3_spritesheet.xml">
+      <Filter>Spritesheets</Filter>
+    </Xml>
+    <Xml Include="Assets\p2_spritesheet.xml">
+      <Filter>Spritesheets</Filter>
     </Xml>
   </ItemGroup>
 </Project>
