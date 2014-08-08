@@ -100,11 +100,14 @@
     <ClInclude Include="Textures.h" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="Assets\enemies_spritesheet.xml" />
+    <Xml Include="Assets\hud_spritesheet.xml" />
     <Xml Include="Assets\p1_spritesheet.xml">
       <SubType>Designer</SubType>
     </Xml>
     <Xml Include="Assets\p2_spritesheet.xml" />
     <Xml Include="Assets\p3_spritesheet.xml" />
+    <Xml Include="Assets\tileset_spritesheet.xml" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
