@@ -33,7 +33,6 @@ private:
 	bool bRunning = false;
 
 	std::vector<GameObject*> gameObjects;
-	std::ofstream log;
 
 	//Test, draw Twoeyes
 	GameObject* twoEyes;
