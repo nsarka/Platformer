@@ -55,7 +55,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="Assets\spritesheet.xml">
+    <Xml Include="Assets\p1_spritesheet.xml">
       <Filter>XML sheets</Filter>
     </Xml>
   </ItemGroup>

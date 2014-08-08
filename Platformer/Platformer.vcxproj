@@ -100,7 +100,7 @@
     <ClInclude Include="Textures.h" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="Assets\spritesheet.xml">
+    <Xml Include="Assets\p1_spritesheet.xml">
       <SubType>Designer</SubType>
     </Xml>
   </ItemGroup>
