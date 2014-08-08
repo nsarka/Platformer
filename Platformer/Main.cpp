@@ -26,7 +26,7 @@ int main(int arc, char* args[])
 		SDL_framerateDelay(&fpsManager);
 	}
 
-	//SDL cleanup in destructor
+	//System destructor, clean up SDL
 	delete gamesys;
 
 	return 0;

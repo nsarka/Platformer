@@ -4,8 +4,6 @@
 //System constructer, init SDL
 GameSystem::GameSystem()
 {
-	log.open("log.txt");
-
 	SDL_Init(SDL_INIT_EVERYTHING);
 
 	pWindow = SDL_CreateWindow("Platformer by Magnolium", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, 0);
@@ -30,8 +28,6 @@ GameSystem::~GameSystem()
 	SDL_DestroyWindow(pWindow);
 	SDL_DestroyRenderer(pRenderer);
 	SDL_Quit();
-
-	log.close();
 }
 
 void GameSystem::HandleEvents()
@@ -78,19 +74,16 @@ void GameSystem::Update()
 
 void GameSystem::Print(std::string Message)
 {
-	//log << "(" << SDL_GetTicks() / 1000 << ") " << Message << std::endl;
 	std::cout << "(" << SDL_GetTicks() / 1000 << ") " << Message << std::endl;
 }
 
 void GameSystem::Print(int Message)
 {
-	//log << "(" << SDL_GetTicks() / 1000 << ") " << Message << std::endl;
 	std::cout << "(" << SDL_GetTicks() / 1000 << ") " << Message << std::endl;
 }
 
 
 void GameSystem::PrintSDLError()
 {
-	//log << "(" << SDL_GetTicks() / 1000 << ") " << "Error: " << std::string(SDL_GetError()) << std::endl;
 	std::cout << "(" << SDL_GetTicks() / 1000 << ") " << "Error: " << std::string(SDL_GetError()) << std::endl;
 }
