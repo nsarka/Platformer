@@ -2,7 +2,7 @@
 <spritesheet>
   
     <!-- Spritesheet frames, xpos, ypos, width, height -->
-    <blockerBody xpos="203" ypos="0" width="51" height="51"/>
+  <blockerBody xpos="203" ypos="0" width="51" height="51"/>
 	<blockerMad xpos="136" ypos="66" width="51" height="51"/>
 	<blockerSad xpos="188" ypos="66" width="51" height="51"/>
 	<fishDead xpos="0" ypos="69" width="66" height="42"/>
