@@ -19,7 +19,7 @@ GameSystem::GameSystem()
 	//Test, draw Twoeyes
 	twoEyes = new Player();
 	gameObjects.push_back(twoEyes);
-	twoEyes->Load("Player 1", "Assets/Player/p1_spritesheet.png", "twoEyes", 300, 100, 72, 97, pRenderer);
+	twoEyes->Load("Player 1", "Assets/Player/p2_spritesheet.png", "twoEyes", 300, 100, 72, 97, pRenderer);
 }
 
 //System destructor, clean up SDL

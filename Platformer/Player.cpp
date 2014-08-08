@@ -5,7 +5,7 @@
 
 Player::Player()
 {
-	playerSheet = new SpriteSheet("Assets/spritesheet.xml");
+	playerSheet = new SpriteSheet("Assets/p2_spritesheet.xml");
 	playerSheet->PrintSheet();
 }
 
@@ -15,14 +15,14 @@ void Player::Update()
 
 	if (!state[SDL_SCANCODE_RIGHT] || !state[SDL_SCANCODE_LEFT])
 	{
-		Player::objFrame = playerSheet->GetFrame("p1_stand");
+		Player::objFrame = playerSheet->GetFrame("p2_stand");
 	}
 
 	if (!state[SDL_SCANCODE_RIGHT] || !state[SDL_SCANCODE_LEFT] || !state[SDL_SCANCODE_UP])
 	{
 		if (state[SDL_SCANCODE_DOWN])
 		{
-			Player::objFrame = playerSheet->GetFrame("p1_duck");
+			Player::objFrame = playerSheet->GetFrame("p2_duck");
 			Player::posY += 1;
 		}
 	}
@@ -31,7 +31,7 @@ void Player::Update()
 	{
 		if (state[SDL_SCANCODE_UP])
 		{
-			Player::objFrame = playerSheet->GetFrame("p1_jump");
+			Player::objFrame = playerSheet->GetFrame("p2_jump");
 			Player::posY -= 1;
 		}
 	}
