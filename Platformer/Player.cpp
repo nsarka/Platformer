@@ -6,7 +6,6 @@
 Player::Player()
 {
 	playerSheet = new SpriteSheet("Assets/p2_spritesheet.xml");
-	playerSheet->PrintSheet();
 }
 
 void Player::Update()
@@ -39,18 +38,18 @@ void Player::Update()
 	if (state[SDL_SCANCODE_LEFT])
 	{
 		Player::posX -= 1;
-		flip = true;
+		playerFlip = true;
 		Player::objFrame = playerSheet->GetFrame(walkFrames[int(((SDL_GetTicks() / 25) % 11))]);
 	}
 	if (state[SDL_SCANCODE_RIGHT])
 	{
 		Player::posX += 1;
-		flip = false;
+		playerFlip = false;
 		Player::objFrame = playerSheet->GetFrame(walkFrames[int(((SDL_GetTicks() / 25) % 11))]);
 	}
 }
 
 void Player::Draw(SDL_Renderer* pRenderer)
 {
-	TextureManager::Instance()->DrawTexture(Player::textureID, Player::posX, Player::posY, Player::objFrame.w, Player::objFrame.h, Player::objFrame.x, Player::objFrame.y, pRenderer, flip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+	TextureManager::Instance()->DrawTexture(Player::textureID, Player::posX, Player::posY, Player::objFrame.w, Player::objFrame.h, Player::objFrame.x, Player::objFrame.y, pRenderer, playerFlip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 }

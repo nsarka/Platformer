@@ -5,9 +5,9 @@
 
 SpriteSheet::SpriteSheet(const char* Path)
 {
-	if (doc.LoadFile(Path) == XML_NO_ERROR)
+	if (sheetDoc.LoadFile(Path) == XML_NO_ERROR)
 	{
-		XMLElement* frameElement = doc.FirstChildElement("spritesheet");
+		XMLElement* frameElement = sheetDoc.FirstChildElement("spritesheet");
 
 		//Cycle through all elements in the spritesheet
 		for (tinyxml2::XMLElement* child = frameElement->FirstChildElement(); child != NULL; child = child->NextSiblingElement())

@@ -32,7 +32,8 @@ private:
 
 	bool bRunning = false;
 
-	std::vector<GameObject*> gameObjects;
+	std::vector<GameObject*> levelObjects;
+	std::vector<GameObject*> backgroundObjects;
 
 	//Test, draw Twoeyes
 	GameObject* twoEyes;

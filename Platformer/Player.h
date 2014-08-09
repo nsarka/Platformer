@@ -18,7 +18,7 @@ public:
 private:
 	SpriteSheet* playerSheet = 0;
 	std::string playerName;
-	bool flip = false;
+	bool playerFlip = false;
 
 	//Array so Player::Update() knows which frames are the ones for walking
 	std::array<std::string, 11> walkFrames

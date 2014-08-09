@@ -16,7 +16,7 @@ GameSystem::GameSystem()
 
 	//Test, draw Twoeyes
 	twoEyes = new Player();
-	gameObjects.push_back(twoEyes);
+	levelObjects.push_back(twoEyes);
 	twoEyes->Load("Player 1", "Assets/Player/p2_spritesheet.png", "twoEyes", 300, 100, 72, 97, pRenderer);
 }
 
@@ -54,9 +54,9 @@ void GameSystem::Render()
 	SDL_RenderClear(pRenderer);
 
 	//Loop through all gameobjects and draw
-	for (std::vector<GameObject*>::size_type i = 0; i != gameObjects.size(); i++)
+	for (std::vector<GameObject*>::size_type i = 0; i != levelObjects.size(); i++)
 	{
-		gameObjects[i]->Draw(pRenderer);
+		levelObjects[i]->Draw(pRenderer);
 	}
 
 	//Draw the buffer to screen
@@ -66,9 +66,9 @@ void GameSystem::Render()
 void GameSystem::Update()
 {
 	//Loop through all gameobjects and update
-	for (std::vector<GameObject*>::size_type i = 0; i != gameObjects.size(); i++)
+	for (std::vector<GameObject*>::size_type i = 0; i != levelObjects.size(); i++)
 	{
-		gameObjects[i]->Update();
+		levelObjects[i]->Update();
 	}
 }
 

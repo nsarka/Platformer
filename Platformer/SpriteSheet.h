@@ -17,7 +17,7 @@ public:
 	void PrintSheet();
 
 private:
-	XMLDocument doc;
+	XMLDocument sheetDoc;
 	std::map<std::string, SDL_Rect> frameMap;
 };
 
