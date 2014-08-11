@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+
+<!--  - if physics = 1 the tile will be treated as a gameobject, not a backgroundobject
+      - sound is the footstep noise and/or the action sound
+      - if action = true, the tile will do something when its touched -->
+
+<!-- Level data; Spawn in middle of screen, end when player goes half screen length to the right -->
+<leveldata name="Dev" spawnx="1" spawny="50" levelendx="1024" levelendy="0" levelendw="1024" levelendh="768">
+
+  <!-- Tile data-->
+  <tile name="grass" posX="0" posY="583" physics="false" sound="1" action="false" />
+  <tile name="grass" posX="71" posY="583" physics="false" sound="1" action="false" />
+  <tile name="grass" posX="142" posY="583" physics="false" sound="1" action="false" />
+  <tile name="grass" posX="213" posY="583" physics="false" sound="1" action="false" />
+  <tile name="grass" posX="284" posY="583" physics="false" sound="1" action="false" />
+  <tile name="grass" posX="355" posY="583" physics="false" sound="1" action="false" />
+  <tile name="grass" posX="426" posY="583" physics="false" sound="1" action="false" />
+  <tile name="grass" posX="497" posY="583" physics="false" sound="1" action="false" />
+  <tile name="grass" posX="568" posY="583" physics="false" sound="1" action="false" />
+  <tile name="grass" posX="639" posY="583" physics="false" sound="1" action="false" />
+  <tile name="grass" posX="710" posY="583" physics="false" sound="1" action="false" />
+  <tile name="grass" posX="781" posY="583" physics="false" sound="1" action="false" />
+  <tile name="stone" posX="300" posY="300" physics="false" sound="2" action="false" />
+  <tile name="brickWall" posX="300" posY="600" physics="false" sound="0" action="false" />
+  <tile name="brickWall" posX="200" posY="450" physics="false" sound="0" action="false" />
+  <tile name="brickWall" posX="800" posY="700" physics="false" sound="0" action="false" />
+  <tile name="brickWall" posX="100" posY="150" physics="false" sound="0" action="false" />
+  <tile name="brickWall" posX="700" posY="100" physics="false" sound="0" action="false" />
+  <tile name="brickWall" posX="100" posY="900" physics="false" sound="0" action="false" />
+  <tile name="star" posX="1024" posY="0" physics="false" sound="0" action="false" />
+  <tile name="star" posX="1024" posY="71" physics="false" sound="0" action="false" />
+  <tile name="star" posX="1024" posY="142" physics="false" sound="0" action="false" />
+  <tile name="star" posX="1024" posY="213" physics="false" sound="0" action="false" />
+  <tile name="star" posX="1024" posY="284" physics="false" sound="0" action="false" />
+  <tile name="star" posX="1024" posY="355" physics="false" sound="0" action="false" />
+  <tile name="star" posX="1024" posY="426" physics="false" sound="0" action="false" />
+  <tile name="star" posX="1024" posY="497" physics="false" sound="0" action="false" />
+  <tile name="star" posX="1024" posY="568" physics="false" sound="0" action="false" />
+  <tile name="star" posX="1024" posY="639" physics="false" sound="0" action="false" />
+  <tile name="star" posX="1024" posY="710" physics="false" sound="0" action="false" />
+  <tile name="star" posX="1024" posY="781" physics="false" sound="0" action="false" />
+    
+  
+</leveldata>

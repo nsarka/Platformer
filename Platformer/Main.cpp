@@ -14,7 +14,7 @@ int main(int arc, char* args[])
 	SDL_initFramerate(&fpsManager);
 
 	//Set the framerate
-	SDL_setFramerate(&fpsManager, 160);
+	SDL_setFramerate(&fpsManager, 200);
 
 	while(gamesys->Running())
 	{

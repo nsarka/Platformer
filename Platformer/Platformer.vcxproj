@@ -86,7 +86,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="GameObject.cpp" />
-    <ClCompile Include="Level.cpp" />
+    <ClCompile Include="GameTile.cpp" />
+    <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="GameSystem.cpp" />
     <ClCompile Include="Player.cpp" />
@@ -96,7 +97,8 @@
   <ItemGroup>
     <ClInclude Include="GameObject.h" />
     <ClInclude Include="GameSystem.h" />
-    <ClInclude Include="Level.h" />
+    <ClInclude Include="GameTile.h" />
+    <ClInclude Include="LevelManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="Textures.h" />
@@ -104,6 +106,9 @@
   <ItemGroup>
     <Xml Include="Assets\enemies_spritesheet.xml" />
     <Xml Include="Assets\hud_spritesheet.xml" />
+    <Xml Include="Assets\level01.xml">
+      <SubType>Designer</SubType>
+    </Xml>
     <Xml Include="Assets\p1_spritesheet.xml">
       <SubType>Designer</SubType>
     </Xml>

@@ -24,8 +24,7 @@ SpriteSheet::SpriteSheet(const char* Path)
 	}
 	else
 	{
-		GameSystem::Print("XML sheet could not be found");
-		GameSystem::Print(std::string(Path));
+		std::cout << "XML sheet could not be found: " << std::string(Path) << std::endl;
 	}
 }
 
@@ -34,8 +33,7 @@ SDL_Rect SpriteSheet::GetFrame(std::string FrameName)
 {
 	if (frameMap.find(FrameName) == frameMap.end())
 	{
-		GameSystem::Print("Frame could not be found in spritesheet");
-		GameSystem::Print(FrameName);
+		std::cout << "Frame " << std::string(FrameName) << " not found in spritesheet" << std::endl;
 	}
 	else
 	{
@@ -47,9 +45,8 @@ void SpriteSheet::PrintSheet()
 {
 	for (auto i = frameMap.begin(); i != frameMap.end(); ++i)
 	{
-		GameSystem::Print(i->first);
-		GameSystem::Print(i->second.x);
-		GameSystem::Print(" ");
+		std::cout << i->first << " ";
+		std::cout << i->second.x << std::endl;
 	}
 }
 

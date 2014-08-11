@@ -9,15 +9,19 @@ GameSystem::GameSystem()
 	pWindow = SDL_CreateWindow("Platformer by Magnolium", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, 0);
 	pRenderer = SDL_CreateRenderer(pWindow, -1, 0);
 
-	//Set the default draw color to black
-	SDL_SetRenderDrawColor(pRenderer, 0, 0, 0, 255);
+	//Set the default draw color to a sky color
+	SDL_SetRenderDrawColor(pRenderer, 208, 244, 247, 255);
 
 	bRunning = true;
 
-	//Test, draw Twoeyes
+	//Initialize the level
+	levelManager.LoadLevelSheet("Assets/tileset_spritesheet.xml");
+	levelManager.LoadLevelData("Assets/level01.xml");
+
+	//Load TwoEyes
 	twoEyes = new Player();
-	levelObjects.push_back(twoEyes);
-	twoEyes->Load("Player 1", "Assets/Player/p2_spritesheet.png", "twoEyes", 300, 100, 72, 97, pRenderer);
+	levelManager.levelObjects.push_back(twoEyes);
+	twoEyes->Load("Player 1", "Assets/Player/p2_spritesheet.png", "twoEyes", 300, 300, 72, 97, pRenderer);
 }
 
 //System destructor, clean up SDL
@@ -53,10 +57,17 @@ void GameSystem::Render()
 	//Clear the screen
 	SDL_RenderClear(pRenderer);
 
-	//Loop through all gameobjects and draw
-	for (std::vector<GameObject*>::size_type i = 0; i != levelObjects.size(); i++)
+	//Loop through all the levels tiles and draw
+	for (std::vector<GameTile>::size_type i = 0; i != levelManager.levelTiles.size(); i++)
 	{
-		levelObjects[i]->Draw(pRenderer);
+		levelManager.levelTiles[i]->Draw(pRenderer);
+		//std::cout << levelManager.levelTiles[i]->textureName << std::endl;
+	}
+
+	//Loop through all gameobjects and draw
+	for (std::vector<GameObject*>::size_type i = 0; i != levelManager.levelObjects.size(); i++)
+	{
+		levelManager.levelObjects[i]->Draw(pRenderer);
 	}
 
 	//Draw the buffer to screen
@@ -66,24 +77,8 @@ void GameSystem::Render()
 void GameSystem::Update()
 {
 	//Loop through all gameobjects and update
-	for (std::vector<GameObject*>::size_type i = 0; i != levelObjects.size(); i++)
+	for (std::vector<GameObject*>::size_type i = 0; i != levelManager.levelObjects.size(); i++)
 	{
-		levelObjects[i]->Update();
+		levelManager.levelObjects[i]->Update();
 	}
-}
-
-void GameSystem::Print(std::string Message)
-{
-	std::cout << "(" << SDL_GetTicks() / 1000 << ") " << Message << std::endl;
-}
-
-void GameSystem::Print(int Message)
-{
-	std::cout << "(" << SDL_GetTicks() / 1000 << ") " << Message << std::endl;
-}
-
-
-void GameSystem::PrintSDLError()
-{
-	std::cout << "(" << SDL_GetTicks() / 1000 << ") " << "Error: " << std::string(SDL_GetError()) << std::endl;
 }
