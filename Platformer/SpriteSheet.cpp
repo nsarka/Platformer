@@ -34,6 +34,10 @@ SDL_Rect SpriteSheet::GetFrame(std::string FrameName)
 	if (frameMap.find(FrameName) == frameMap.end())
 	{
 		std::cout << "Frame " << std::string(FrameName) << " not found in spritesheet" << std::endl;
+
+		//Just to stop compiler warning
+		SDL_Rect rect = { 0, 0, 0, 0 };
+		return rect;
 	}
 	else
 	{
@@ -45,7 +49,7 @@ void SpriteSheet::PrintSheet()
 {
 	for (auto i = frameMap.begin(); i != frameMap.end(); ++i)
 	{
-		std::cout << i->first << " ";
+		std::cout << i->first << ": ";
 		std::cout << i->second.x << std::endl;
 	}
 }

@@ -1,12 +1,11 @@
 #pragma once
-#include "GameObject.h"
-#include "SpriteSheet.h"
 #include "SDL.h"
+#include "SpriteSheet.h"
 #include <string>
 #include <array>
 
 
-class Player : public GameObject
+class Player
 {
 public:
 	Player();
@@ -14,10 +13,28 @@ public:
 
 	void Update();
 	void Draw(SDL_Renderer* pRenderer);
+	void Load(std::string path, std::string texture, int x, int y, SDL_Renderer* pRenderer);
+
+	void HandleInput();
+
+	int GetWorldPosX() { return playerWorldPos.x; }
+	int GetWorldPosY() { return playerWorldPos.y; }
+
+	int GetScreenPosX() { return playerScreenPos.x; }
+	int GetScreenPosY() { return playerScreenPos.y; }
 
 private:
 	SpriteSheet* playerSheet = 0;
+
+	SDL_Point playerScreenPos;
+	SDL_Point playerWorldPos;
+
+	std::string textureID;
 	std::string playerName;
+
+	SDL_Rect objFrame;
+
+	//Is player facing left or right
 	bool playerFlip = false;
 
 	//Array so Player::Update() knows which frames are the ones for walking

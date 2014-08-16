@@ -53,7 +53,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <WarningLevel>TurnOffAllWarnings</WarningLevel>
+      <WarningLevel>Level3</WarningLevel>
       <Optimization>Full</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
@@ -85,7 +85,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="GameTile.cpp" />
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -95,7 +95,7 @@
     <ClCompile Include="Textures.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="GameSystem.h" />
     <ClInclude Include="GameTile.h" />
     <ClInclude Include="LevelManager.h" />
@@ -114,7 +114,9 @@
     </Xml>
     <Xml Include="Assets\p2_spritesheet.xml" />
     <Xml Include="Assets\p3_spritesheet.xml" />
-    <Xml Include="Assets\tileset_spritesheet.xml" />
+    <Xml Include="Assets\tileset_spritesheet.xml">
+      <SubType>Designer</SubType>
+    </Xml>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

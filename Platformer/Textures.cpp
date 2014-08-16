@@ -30,9 +30,6 @@ bool TextureManager::LoadTexture(std::string fileName, std::string id, SDL_Rende
 
 void TextureManager::DrawTexture(std::string id, int destX, int destY, int width, int height, int srcX, int srcY, SDL_Renderer* pRenderer, SDL_RendererFlip flip)
 {
-	SDL_Rect srcRect;
-	SDL_Rect destRect;
-
 	srcRect.x = srcX;
 	srcRect.y = srcY;
 	srcRect.w = destRect.w = width;

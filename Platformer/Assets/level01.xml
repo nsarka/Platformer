@@ -1,44 +1,141 @@
 <?xml version="1.0"?>
 
-<!--  - if physics = 1 the tile will be treated as a gameobject, not a backgroundobject
+<!--  - physics; 0 = none, 1 = static, 2 = dynamic, 3 = kinematic
       - sound is the footstep noise and/or the action sound
-      - if action = true, the tile will do something when its touched -->
+      - if action = true, the tile will do something when its touched
+      - levelendx, y, w, and h is the rectangle a player has to be in to win
+      - mapx, y, w, and h is the complete map size -->
 
-<!-- Level data; Spawn in middle of screen, end when player goes half screen length to the right -->
-<leveldata name="Dev" spawnx="1" spawny="50" levelendx="1024" levelendy="0" levelendw="1024" levelendh="768">
+<!-- Level data; Spawn in middle of screen -->
+<leveldata name="Dev" spawnx="350" spawny="390"
+           mapx="0" mapy="0" mapw="1500" maph="2000" 
+           levelendx="1024" levelendy="0" levelendw="1024" levelendh="768" >
 
-  <!-- Tile data-->
-  <tile name="grass" posX="0" posY="583" physics="false" sound="1" action="false" />
-  <tile name="grass" posX="71" posY="583" physics="false" sound="1" action="false" />
-  <tile name="grass" posX="142" posY="583" physics="false" sound="1" action="false" />
-  <tile name="grass" posX="213" posY="583" physics="false" sound="1" action="false" />
-  <tile name="grass" posX="284" posY="583" physics="false" sound="1" action="false" />
-  <tile name="grass" posX="355" posY="583" physics="false" sound="1" action="false" />
-  <tile name="grass" posX="426" posY="583" physics="false" sound="1" action="false" />
-  <tile name="grass" posX="497" posY="583" physics="false" sound="1" action="false" />
-  <tile name="grass" posX="568" posY="583" physics="false" sound="1" action="false" />
-  <tile name="grass" posX="639" posY="583" physics="false" sound="1" action="false" />
-  <tile name="grass" posX="710" posY="583" physics="false" sound="1" action="false" />
-  <tile name="grass" posX="781" posY="583" physics="false" sound="1" action="false" />
-  <tile name="stone" posX="300" posY="300" physics="false" sound="2" action="false" />
-  <tile name="brickWall" posX="300" posY="600" physics="false" sound="0" action="false" />
-  <tile name="brickWall" posX="200" posY="450" physics="false" sound="0" action="false" />
-  <tile name="brickWall" posX="800" posY="700" physics="false" sound="0" action="false" />
-  <tile name="brickWall" posX="100" posY="150" physics="false" sound="0" action="false" />
-  <tile name="brickWall" posX="700" posY="100" physics="false" sound="0" action="false" />
-  <tile name="brickWall" posX="100" posY="900" physics="false" sound="0" action="false" />
-  <tile name="star" posX="1024" posY="0" physics="false" sound="0" action="false" />
-  <tile name="star" posX="1024" posY="71" physics="false" sound="0" action="false" />
-  <tile name="star" posX="1024" posY="142" physics="false" sound="0" action="false" />
-  <tile name="star" posX="1024" posY="213" physics="false" sound="0" action="false" />
-  <tile name="star" posX="1024" posY="284" physics="false" sound="0" action="false" />
-  <tile name="star" posX="1024" posY="355" physics="false" sound="0" action="false" />
-  <tile name="star" posX="1024" posY="426" physics="false" sound="0" action="false" />
-  <tile name="star" posX="1024" posY="497" physics="false" sound="0" action="false" />
-  <tile name="star" posX="1024" posY="568" physics="false" sound="0" action="false" />
-  <tile name="star" posX="1024" posY="639" physics="false" sound="0" action="false" />
-  <tile name="star" posX="1024" posY="710" physics="false" sound="0" action="false" />
-  <tile name="star" posX="1024" posY="781" physics="false" sound="0" action="false" />
-    
+  <!-- Tile data // Things will be drawn on the list in order as it goes down, so 
+       things in the front should be placed last here -->
+  
+  <!-- Ground -->
+  <tile name="grassMid" posX="0" posY="488" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="70" posY="488" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="140" posY="488" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="210" posY="488" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="280" posY="488" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="350" posY="488" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="420" posY="488" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="490" posY="488" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="560" posY="488" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="630" posY="488" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="700" posY="488" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="770" posY="488" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="840" posY="488" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="910" posY="488" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="980" posY="488" physics="1" sound="1" action="false" />
+  <tile name="grassCenter" posX="0" posY="558" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="70" posY="558" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="140" posY="558" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="210" posY="558" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="280" posY="558" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="350" posY="558" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="420" posY="558" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="490" posY="558" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="560" posY="558" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="630" posY="558" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="700" posY="558" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="770" posY="558" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="840" posY="558" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="910" posY="558" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="980" posY="558" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="0" posY="628" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="70" posY="628" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="140" posY="628" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="210" posY="628" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="280" posY="628" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="350" posY="628" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="420" posY="628" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="490" posY="628" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="560" posY="628" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="630" posY="628" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="700" posY="628" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="770" posY="628" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="840" posY="628" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="910" posY="628" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="980" posY="628" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="0" posY="698" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="70" posY="698" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="140" posY="698" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="210" posY="698" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="280" posY="698" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="350" posY="698" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="420" posY="698" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="490" posY="698" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="560" posY="698" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="630" posY="698" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="700" posY="698" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="770" posY="698" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="840" posY="698" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="910" posY="698" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="980" posY="698" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="0" posY="768" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="70" posY="768" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="140" posY="768" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="210" posY="768" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="280" posY="768" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="350" posY="768" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="420" posY="768" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="490" posY="768" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="560" posY="768" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="630" posY="768" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="700" posY="768" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="770" posY="768" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="840" posY="768" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="910" posY="768" physics="0" sound="1" action="false" />
+  <tile name="grassCenter" posX="980" posY="768" physics="0" sound="1" action="false" />
+  <tile name="bridge" posX="1050" posY="438" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1120" posY="438" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1190" posY="438" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1260" posY="438" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1330" posY="438" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1400" posY="438" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1470" posY="438" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1540" posY="438" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1610" posY="438" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1680" posY="438" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1750" posY="438" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1820" posY="438" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1890" posY="438" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1960" posY="438" physics="1" sound="1" action="false" />
+
+  <!-- Sky objects -->
+  <tile name="star" posX="150" posY="100" physics="0" sound="1" action="false" />
+  <tile name="plant" posX="700" posY="420" physics="0" sound="1" action="false" />
+  <tile name="fence" posX="100" posY="420" physics="0" sound="1" action="false" />
+  <tile name="fence" posX="160" posY="420" physics="0" sound="1" action="false" />
+  <tile name="fenceBroken" posX="220" posY="420" physics="0" sound="1" action="false" />
+  <tile name="boxItem" posX="740" posY="40" physics="1" sound="1" action="false" />
+  <tile name="boxEmpty" posX="470" posY="420" physics="2" sound="1" action="false" />
+  <tile name="boxEmpty" posX="540" posY="420" physics="2" sound="1" action="false" />
+  <tile name="boxEmpty" posX="505" posY="350" physics="2" sound="1" action="false" />
+
+  <!-- Top right platform -->
+  <tile name="grassCliffLeft" posX="600" posY="216" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="670" posY="216" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="740" posY="216" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="810" posY="216" physics="1" sound="1" action="false" />
+  <tile name="grassCliffRight" posX="880" posY="216" physics="1" sound="1" action="false" />
+  <tile name="rock" posX="810" posY="146" physics="1" sound="1" action="false" />
+  <tile name="cactus" posX="880" posY="146" physics="0" sound="1" action="false" />
+  
+  <!-- Right of start screen -->
+  <tile name="grass" posX="1100" posY="200" physics="1" sound="1" action="false" />
+  <tile name="grass" posX="1200" posY="100" physics="1" sound="1" action="false" />
+  <tile name="grass" posX="1300" posY="50" physics="1" sound="1" action="false" />
+  <tile name="grass" posX="1450" posY="175" physics="1" sound="1" action="false" />
+
+  <!-- Bottom of start screen -->
+  <tile name="grass" posX="100" posY="1000" physics="1" sound="1" action="false" />
+  <tile name="grass" posX="200" posY="1300" physics="1" sound="1" action="false" />
+  <tile name="grass" posX="300" posY="1600" physics="1" sound="1" action="false" />
+  <tile name="grass" posX="450" posY="1900" physics="1" sound="1" action="false" />
+  <tile name="grass" posX="450" posY="2100" physics="1" sound="1" action="false" />
   
 </leveldata>

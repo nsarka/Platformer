@@ -1,5 +1,5 @@
 #include "LevelManager.h"
-#include "GameTile.h"
+#include "Camera.h"
 
 
 LevelManager::LevelManager()
@@ -13,25 +13,43 @@ LevelManager::LevelManager()
 	spawnPoint.y = 0;
 }
 
-void LevelManager::LoadLevelSheet(const char* SheetPath)
+void LevelManager::LoadLevelSheet(const char* XMLPath)
 {
-	levelSheet = new SpriteSheet(SheetPath);
+	levelSheet = new SpriteSheet(XMLPath);
 }
 
-void LevelManager::LoadLevelData(const char* LevelPath)
+void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL_Renderer* pRenderer)
 {
-	if (levelDoc.LoadFile(LevelPath) == XML_NO_ERROR)
+	if (levelDoc.LoadFile(XMLPath) == XML_NO_ERROR)
 	{
 		//Parse level data
 		XMLElement* levelElement = levelDoc.FirstChildElement("leveldata");
 
-		//Create variables to put data in
-		std::string levelname;
-
 		//Get the data
-		//levelElement->QueryAttribute("name", &levelname);
+		levelName = std::string(levelElement->Attribute("name"));
+
+		//Load the level's spritesheet image and give it the same name as the level
+		TextureManager::Instance()->LoadTexture(std::string(ImagePath), levelName, pRenderer);
+
+		//Get the rest of the level's info
 		levelElement->QueryIntAttribute("spawnx", &spawnPoint.x);
 		levelElement->QueryIntAttribute("spawny", &spawnPoint.y);
+
+		//Put map boundaries into camera class
+		SDL_Rect mapBoundaries;
+
+		levelElement->QueryIntAttribute("mapx", &mapBoundaries.x);
+		levelElement->QueryIntAttribute("mapy", &mapBoundaries.y);
+		levelElement->QueryIntAttribute("mapw", &mapBoundaries.w);
+		levelElement->QueryIntAttribute("maph", &mapBoundaries.h);
+
+		//Camera bounds and map boundaries are the same thing
+		Camera::Instance()->SetCameraBoundsX(mapBoundaries.x);
+		Camera::Instance()->SetCameraBoundsY(mapBoundaries.y);
+		Camera::Instance()->SetCameraBoundsW(mapBoundaries.w);
+		Camera::Instance()->SetCameraBoundsH(mapBoundaries.h);
+
+		//Get the end boundaries so the game knows when the player has won
 		levelElement->QueryIntAttribute("levelendx", &levelEndBoundaries.x);
 		levelElement->QueryIntAttribute("levelendy", &levelEndBoundaries.y);
 		levelElement->QueryIntAttribute("levelendw", &levelEndBoundaries.w);
@@ -40,29 +58,54 @@ void LevelManager::LoadLevelData(const char* LevelPath)
 		//Cycle through all elements in the spritesheet
 		for (tinyxml2::XMLElement* child = levelElement->FirstChildElement(); child != NULL; child = child->NextSiblingElement())
 		{
-			GameTile tile;
+			//Create a new tile to add to our master tile list
+			GameTile* tile = new GameTile;
+			SDL_Point point;
+			std::string tileName;
+			int physics;
+			int sound;
+			bool action;
+			SDL_Rect rect;
 
-			tile.textureName = std::string(child->Attribute("name"));
+			//Read XML document to get this info
+			tileName = std::string(child->Attribute("name"));
+			child->QueryIntAttribute("posX", &point.x);
+			child->QueryIntAttribute("posY", &point.y);
+			child->QueryIntAttribute("physics", &physics);
+			child->QueryIntAttribute("sound", &sound);
+			child->QueryBoolAttribute("action", &action);
 
-			child->QueryIntAttribute("posX", &tile.point.x);
-			child->QueryIntAttribute("posY", &tile.point.y);
-			child->QueryBoolAttribute("physics", &tile.physics);
-			child->QueryIntAttribute("sound", &tile.sound);
-			child->QueryBoolAttribute("action", &tile.action);
+			//Get the frame info from the spritesheet by name
+			rect = levelSheet->GetFrame(tileName);
+
+			//Set the tiles information
+			tile->SetTileName(tileName);
+			tile->SetImageName(levelName);
+			tile->SetPoint(point);
+			tile->SetPhysics(physics);
+			tile->SetSound(sound);
+			tile->SetAction(action);
+			tile->SetFrame(rect);
 
 			//Add tile to list
-			levelTiles.push_back(&tile);
+			levelTiles.push_back(tile);
 		}
+
+		//Level is done, create player
+		player.Load("Assets/Player/p2_spritesheet.png", "playertexture", spawnPoint.x, spawnPoint.y, pRenderer);
+
+		//Set the cameras position
+		Camera::Instance()->SetFocus(spawnPoint);
 	}
 	else
 	{
-		std::cout << "XML sheet could not be found: " << std::string(LevelPath) << std::endl;
+		std::cout << "XML sheet could not be found: " << std::string(XMLPath) << std::endl;
 	}
 }
 
 void LevelManager::CleanLevel()
 {
-
+	//Clear tile map, save player coords
 }
 
 LevelManager::~LevelManager()

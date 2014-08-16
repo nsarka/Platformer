@@ -1,13 +1,13 @@
 <?xml version="1.0"?>
 <spritesheet>
   
-    <!-- Spritesheet frames, xpos, ypos, width, height -->
-    <bush xpos="0" ypos="0" width="70" height="70"/>
-    <buttonBlue xpos="71" ypos="0" width="70" height="70"/>
-    <buttonBlue_pressed xpos="142" ypos="0" width="70" height="70"/>
-    <buttonGreen xpos="0" ypos="71" width="70" height="70"/>
-    <buttonGreen_pressed xpos="71" ypos="71" width="70" height="70"/>
-    <buttonRed xpos="0" ypos="142" width="70" height="70"/>
+  <!-- Spritesheet frames, xpos, ypos, width, height -->
+  <bush xpos="0" ypos="0" width="70" height="70"/>
+  <buttonBlue xpos="71" ypos="0" width="70" height="70"/>
+  <buttonBlue_pressed xpos="142" ypos="0" width="70" height="70"/>
+  <buttonGreen xpos="0" ypos="71" width="70" height="70"/>
+  <buttonGreen_pressed xpos="71" ypos="71" width="70" height="70"/>
+  <buttonRed xpos="0" ypos="142" width="70" height="70"/>
 	<buttonRed_pressed xpos="71" ypos="142" width="70" height="70"/>
 	<buttonYellow xpos="142" ypos="71" width="70" height="70"/>
 	<buttonYellow_pressed xpos="142" ypos="142" width="70" height="70"/>
