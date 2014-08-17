@@ -5,6 +5,7 @@ GameSystem::GameSystem()
 {
 	SDL_Init(SDL_INIT_EVERYTHING);
 
+	//Keep window at 1024x768
 	pWindow = SDL_CreateWindow("Platformer by Magnolium", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, 0);
 	pRenderer = SDL_CreateRenderer(pWindow, -1, 0);
 
