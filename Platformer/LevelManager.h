@@ -33,6 +33,13 @@ public:
 	//Each level will have a player
 	Player player;
 
+	//And a world
+	b2World* world = 0;
+	float32 timeStep = 1.0f / 100.0f;
+	int32 velocityIterations = 6;
+	int32 positionIterations = 2;
+	float sc = 16.0;
+
 private:
 	//Level name parsed in levelDoc
 	std::string levelName = "null: call LoadLevelSheet before LoadLevelData";

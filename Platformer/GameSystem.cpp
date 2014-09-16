@@ -1,4 +1,5 @@
 #include "GameSystem.h"
+#include "Util.h"
 
 //System constructer, init SDL
 GameSystem::GameSystem()
@@ -16,7 +17,7 @@ GameSystem::GameSystem()
 	SDL_initFramerate(&fpsManager);
 
 	//Set the framerate
-	SDL_setFramerate(&fpsManager, 200);
+	SDL_setFramerate(&fpsManager, 100);
 
 	//Init sdl_ttf to draw text on screen
 	if (TTF_Init() == 0)
@@ -95,11 +96,11 @@ void GameSystem::Render()
 	//Render all tiles by looping through all the levels tiles and drawing
 	for (std::vector<GameTile*>::size_type i = 0; i != levelManager.levelTiles.size(); i++)
 	{
-		levelManager.levelTiles[i]->Draw(pRenderer);
+		levelManager.levelTiles[i]->Draw(pRenderer, bDebugInfo);
 	}
 
 	//Render Player
-	levelManager.player.Draw(pRenderer);
+	levelManager.player.Draw(pRenderer, bDebugInfo);
 
 	//Render debug text
 	if (bDebugInfo) { DrawText(DebugString); }
@@ -113,13 +114,14 @@ void GameSystem::Update()
 	//Update debug text's player coords, fps, level name, etc.
 	UpdateDebugText();
 
-	/*
-	//Loop through all gameobjects and update
-	for (std::vector<GameObject*>::size_type i = 0; i != levelManager.levelObjects.size(); i++)
+	//Update the physics world
+	levelManager.world->Step(levelManager.timeStep, levelManager.velocityIterations, levelManager.positionIterations);
+
+	//Update all tiles by looping through them
+	for (std::vector<GameTile*>::size_type i = 0; i != levelManager.levelTiles.size(); i++)
 	{
-		levelManager.levelObjects[i]->Update();
+		levelManager.levelTiles[i]->Update();
 	}
-	*/
 
 	//Get player input, move player, etc.
 	levelManager.player.Update();

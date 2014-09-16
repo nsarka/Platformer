@@ -1,5 +1,6 @@
 #pragma once
 #include "SDL.h"
+#include "Box2d.h"
 #include "SpriteSheet.h"
 #include <string>
 #include <array>
@@ -12,8 +13,9 @@ public:
 	~Player() {};
 
 	void Update();
-	void Draw(SDL_Renderer* pRenderer);
-	void Load(std::string path, std::string texture, int x, int y, SDL_Renderer* pRenderer);
+	void Draw(SDL_Renderer* pRenderer, bool debug);
+	void drawBody(SDL_Renderer* renderer);
+	void Load(std::string path, std::string texture, int x, int y, SDL_Renderer* pRenderer, b2World* world);
 
 	void HandleInput();
 
@@ -33,6 +35,10 @@ private:
 	std::string playerName;
 
 	SDL_Rect objFrame;
+
+	b2BodyDef playerBodyDef;
+	b2Body* playerBody;
+	b2FixtureDef playerFixtureDef;
 
 	//Is player facing left or right
 	bool playerFlip = false;

@@ -111,10 +111,10 @@
   <tile name="fence" posX="100" posY="420" physics="0" sound="1" action="false" />
   <tile name="fence" posX="160" posY="420" physics="0" sound="1" action="false" />
   <tile name="fenceBroken" posX="220" posY="420" physics="0" sound="1" action="false" />
-  <tile name="boxItem" posX="740" posY="40" physics="1" sound="1" action="false" />
+  <tile name="boxItem" posX="740" posY="40" physics="2" sound="1" action="false" />
   <tile name="boxEmpty" posX="470" posY="420" physics="2" sound="1" action="false" />
   <tile name="boxEmpty" posX="540" posY="420" physics="2" sound="1" action="false" />
-  <tile name="boxEmpty" posX="505" posY="350" physics="2" sound="1" action="false" />
+  <tile name="boxEmpty" posX="505" posY="100" physics="2" sound="1" action="false" />
 
   <!-- Top right platform -->
   <tile name="grassCliffLeft" posX="600" posY="216" physics="1" sound="1" action="false" />

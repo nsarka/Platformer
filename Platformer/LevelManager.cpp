@@ -11,6 +11,9 @@ LevelManager::LevelManager()
 
 	spawnPoint.x = 0;
 	spawnPoint.y = 0;
+
+	b2Vec2 gravity(0.0f, -9.8f);
+	world = new b2World(gravity);
 }
 
 void LevelManager::LoadLevelSheet(const char* XMLPath)
@@ -59,7 +62,7 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 		for (tinyxml2::XMLElement* child = levelElement->FirstChildElement(); child != NULL; child = child->NextSiblingElement())
 		{
 			//Create a new tile to add to our master tile list
-			GameTile* tile = new GameTile;
+			GameTile* tile = new GameTile();
 			SDL_Point point;
 			std::string tileName;
 			int physics;
@@ -82,17 +85,17 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 			tile->SetTileName(tileName);
 			tile->SetImageName(levelName);
 			tile->SetPoint(point);
-			tile->SetPhysics(physics);
+			tile->SetFrame(rect);
+			tile->SetPhysics(physics, world);
 			tile->SetSound(sound);
 			tile->SetAction(action);
-			tile->SetFrame(rect);
 
 			//Add tile to list
 			levelTiles.push_back(tile);
 		}
 
 		//Level is done, create player
-		player.Load("Assets/Player/p2_spritesheet.png", "playertexture", spawnPoint.x, spawnPoint.y, pRenderer);
+		player.Load("Assets/Player/p2_spritesheet.png", "playertexture", spawnPoint.x, spawnPoint.y, pRenderer, world);
 
 		//Set the cameras position
 		Camera::Instance()->SetFocus(spawnPoint);

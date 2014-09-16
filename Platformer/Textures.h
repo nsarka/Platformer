@@ -13,7 +13,7 @@ public:
 	}
 
 	bool LoadTexture(std::string fileName, std::string id, SDL_Renderer* pRenderer);
-	void DrawTexture(std::string id, int destX, int destY, int width, int height, int srcX, int srcY, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void DrawTexture(std::string id, int destX, int destY, int width, int height, int srcX, int srcY, float angle, SDL_Renderer* pRenderer, SDL_RendererFlip flip = SDL_FLIP_NONE);
 
 private:
 	TextureManager() {}
