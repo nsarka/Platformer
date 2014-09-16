@@ -7,7 +7,7 @@
       - mapx, y, w, and h is the complete map size -->
 
 <!-- Level data; Spawn in middle of screen -->
-<leveldata name="Dev" spawnx="350" spawny="390"
+<leveldata name="Dev" spawnx="400" spawny="50"
            mapx="0" mapy="0" mapw="1500" maph="2000" 
            levelendx="1024" levelendy="0" levelendw="1024" levelendh="768" >
 
@@ -15,7 +15,6 @@
        things in the front should be placed last here -->
   
   <!-- Ground -->
-  <tile name="grassMid" posX="0" posY="488" physics="1" sound="1" action="false" />
   <tile name="grassMid" posX="70" posY="488" physics="1" sound="1" action="false" />
   <tile name="grassMid" posX="140" posY="488" physics="1" sound="1" action="false" />
   <tile name="grassMid" posX="210" posY="488" physics="1" sound="1" action="false" />
@@ -90,20 +89,20 @@
   <tile name="grassCenter" posX="840" posY="768" physics="0" sound="1" action="false" />
   <tile name="grassCenter" posX="910" posY="768" physics="0" sound="1" action="false" />
   <tile name="grassCenter" posX="980" posY="768" physics="0" sound="1" action="false" />
-  <tile name="bridge" posX="1050" posY="438" physics="1" sound="1" action="false" />
-  <tile name="bridge" posX="1120" posY="438" physics="1" sound="1" action="false" />
-  <tile name="bridge" posX="1190" posY="438" physics="1" sound="1" action="false" />
-  <tile name="bridge" posX="1260" posY="438" physics="1" sound="1" action="false" />
-  <tile name="bridge" posX="1330" posY="438" physics="1" sound="1" action="false" />
-  <tile name="bridge" posX="1400" posY="438" physics="1" sound="1" action="false" />
-  <tile name="bridge" posX="1470" posY="438" physics="1" sound="1" action="false" />
-  <tile name="bridge" posX="1540" posY="438" physics="1" sound="1" action="false" />
-  <tile name="bridge" posX="1610" posY="438" physics="1" sound="1" action="false" />
-  <tile name="bridge" posX="1680" posY="438" physics="1" sound="1" action="false" />
-  <tile name="bridge" posX="1750" posY="438" physics="1" sound="1" action="false" />
-  <tile name="bridge" posX="1820" posY="438" physics="1" sound="1" action="false" />
-  <tile name="bridge" posX="1890" posY="438" physics="1" sound="1" action="false" />
-  <tile name="bridge" posX="1960" posY="438" physics="1" sound="1" action="false" />
+  <tile name="grassMid" posX="1050" posY="488" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1120" posY="488" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1190" posY="488" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1260" posY="488" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1330" posY="488" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1400" posY="488" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1470" posY="488" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1540" posY="488" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1610" posY="488" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1680" posY="488" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1750" posY="488" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1820" posY="488" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1890" posY="488" physics="1" sound="1" action="false" />
+  <tile name="bridge" posX="1960" posY="488" physics="1" sound="1" action="false" />
 
   <!-- Sky objects -->
   <tile name="star" posX="150" posY="100" physics="0" sound="1" action="false" />
@@ -123,7 +122,7 @@
   <tile name="grassMid" posX="810" posY="216" physics="1" sound="1" action="false" />
   <tile name="grassCliffRight" posX="880" posY="216" physics="1" sound="1" action="false" />
   <tile name="rock" posX="810" posY="146" physics="1" sound="1" action="false" />
-  <tile name="cactus" posX="880" posY="146" physics="0" sound="1" action="false" />
+  <tile name="cactus" posX="830" posY="146" physics="0" sound="1" action="false" />
   
   <!-- Right of start screen -->
   <tile name="grass" posX="1100" posY="200" physics="1" sound="1" action="false" />

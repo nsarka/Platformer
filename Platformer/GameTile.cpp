@@ -31,8 +31,8 @@ void GameTile::drawBody(SDL_Renderer* renderer)
 				b2Vec2 p1 = tileBody->GetWorldPoint(poly->GetVertex(i));
 
 				SDL_RenderDrawLine(renderer,
-					sc * p0.x + ox, -sc * p0.y + oy,
-					sc * p1.x + ox, -sc * p1.y + oy
+					sc * p0.x - ox, -sc * p0.y - oy,
+					sc * p1.x - ox, -sc * p1.y - oy
 					);
 			}
 			//verts now contains world co-ords of all the verts

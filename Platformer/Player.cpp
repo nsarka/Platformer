@@ -28,7 +28,7 @@ void Player::Load(std::string path, std::string texture, int x, int y, SDL_Rende
 
 	// Define another box shape for our dynamic body.
 	b2PolygonShape dynamicBox;
-	dynamicBox.SetAsBox((objFrame.w) / sc, (objFrame.h) / sc);
+	dynamicBox.SetAsBox((objFrame.w/2) / sc, (objFrame.h/2) / sc);
 
 	// Define the dynamic body fixture.
 	playerFixtureDef.shape = &dynamicBox;
@@ -49,6 +49,7 @@ void Player::Load(std::string path, std::string texture, int x, int y, SDL_Rende
 void Player::drawBody(SDL_Renderer* renderer)
 {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
+	
 	int ox = Camera::Instance()->GetOffset().x;
 	int oy = Camera::Instance()->GetOffset().y;
 
@@ -68,8 +69,8 @@ void Player::drawBody(SDL_Renderer* renderer)
 				b2Vec2 p1 = playerBody->GetWorldPoint(poly->GetVertex(i));
 
 				SDL_RenderDrawLine(renderer,
-					sc * p0.x + ox, -sc * p0.y + oy,
-					sc * p1.x + ox, -sc * p1.y + oy
+					sc * p0.x - ox, -sc * p0.y - oy,
+					sc * p1.x - ox, -sc * p1.y - oy
 					);
 			}
 			//verts now contains world co-ords of all the verts
@@ -86,8 +87,8 @@ void Player::Update()
 
 	//Update him
 	b2Vec2 point = playerBody->GetPosition();
-	playerWorldPos.x = point.x*sc;
-	playerWorldPos.y = -point.y*sc;
+	playerWorldPos.x = (point.x*sc) - (objFrame.w/2);
+	playerWorldPos.y = (-point.y*sc) - (objFrame.h / 2);
 
 	//Let the camera follow him
 	Camera::Instance()->SetFocus(playerWorldPos);
@@ -114,29 +115,29 @@ void Player::HandleInput()
 		objFrame = playerSheet->GetFrame("p2_stand");
 	}
 
-	if (state[SDL_SCANCODE_DOWN] && boundsCheckY != 2)
+	if (state[SDL_SCANCODE_DOWN])
 	{
 		objFrame = playerSheet->GetFrame("p2_duck");
-		playerBody->ApplyLinearImpulse(b2Vec2(0, -1), b2Vec2(0, 0), true);
+		playerBody->ApplyLinearImpulse(b2Vec2(0, -10), b2Vec2(0, 0), true);
 	}
 
-	if (state[SDL_SCANCODE_UP] && boundsCheckY != 1)
+	if (state[SDL_SCANCODE_UP])
 	{
 		objFrame = playerSheet->GetFrame("p2_jump");
-		playerBody->ApplyLinearImpulse(b2Vec2(0, 1), b2Vec2(0, 0), true);
+		playerBody->ApplyLinearImpulse(b2Vec2(0, 10), b2Vec2(0, 0), true);
 	}
 
-	if (state[SDL_SCANCODE_LEFT] && boundsCheckX != 1)
+	if (state[SDL_SCANCODE_LEFT])
 	{
 		playerFlip = true;
 		objFrame = playerSheet->GetFrame(walkFrames[int(((SDL_GetTicks() / 25) % 11))]);
-		playerBody->ApplyLinearImpulse(b2Vec2(-1, 0), b2Vec2(0, 0), true);
+		playerBody->ApplyLinearImpulse(b2Vec2(-10, 0), b2Vec2(0, 0), true);
 	}
 
-	if (state[SDL_SCANCODE_RIGHT] && boundsCheckX != 2)
+	if (state[SDL_SCANCODE_RIGHT])
 	{
 		playerFlip = false;
 		objFrame = playerSheet->GetFrame(walkFrames[int(((SDL_GetTicks() / 25) % 11))]);
-		playerBody->ApplyLinearImpulse(b2Vec2(1, 0), b2Vec2(0, 0), true);
+		playerBody->ApplyLinearImpulse(b2Vec2(10, 0), b2Vec2(0, 0), true);
 	}
 }
