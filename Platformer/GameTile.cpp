@@ -49,7 +49,7 @@ void GameTile::Draw(SDL_Renderer* pRenderer, bool tileDebug)
 		//Get the angle of the body, convert to degrees, and draw
 		if (physics != 0)
 		{
-			angle = tileBody->GetAngle()*-RADTODEG;
+			angle = tileBody->GetAngle()*-RADTODEG; //negative because its backwards
 		}
 		else
 		{
