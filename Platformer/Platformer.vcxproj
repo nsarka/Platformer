@@ -43,12 +43,12 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\dev\SDL2-2.0.3\include;C:\dev\TinyXML-2\include;C:\dev\Box2D_v2.3.0\include\Box2D;$(IncludePath)</IncludePath>
+    <IncludePath>C:\dev\SDL2-2.0.3\include;C:\dev\TinyXML-2\include;C:\dev\Box2D_v2.3.0\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\dev\SDL2-2.0.3\lib\x86;C:\dev\TinyXML-2\lib;C:\dev\Box2D_v2.3.0\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\dev\SDL2-2.0.3\include;C:\dev\TinyXML-2\include;C:\dev\Box2D_v2.3.0\include\Box2D;$(IncludePath)</IncludePath>
+    <IncludePath>C:\dev\SDL2-2.0.3\include;C:\dev\TinyXML-2\include;C:\dev\Box2D_v2.3.0\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\dev\SDL2-2.0.3\lib\x86;C:\dev\TinyXML-2\lib;C:\dev\Box2D_v2.3.0\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
