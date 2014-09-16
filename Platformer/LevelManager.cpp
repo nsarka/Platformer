@@ -95,9 +95,11 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 		}
 
 		//Level is done, create player
-		player.Load("Assets/Player/p2_spritesheet.png", "playertexture", spawnPoint.x, spawnPoint.y, pRenderer, world);
+		player.Load("Assets/Player/p1_spritesheet.png", "playertexture", spawnPoint.x, spawnPoint.y, pRenderer, world);
 
-		//Set the cameras position
+		//Set the cameras position by dividing by the scale and focusing
+		spawnPoint.x = spawnPoint.x / sc;
+		spawnPoint.y = spawnPoint.y / sc;
 		Camera::Instance()->SetFocus(spawnPoint);
 	}
 	else

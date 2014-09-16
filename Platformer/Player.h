@@ -47,17 +47,17 @@ private:
 	std::array<std::string, 11> walkFrames
 	{
 		{
-			"p2_walk01",
-			"p2_walk02",
-			"p2_walk03",
-			"p2_walk04",
-			"p2_walk05",
-			"p2_walk06",
-			"p2_walk07",
-			"p2_walk08",
-			"p2_walk09",
-			"p2_walk10",
-			"p2_walk11"
+			"p1_walk01",
+			"p1_walk02",
+			"p1_walk03",
+			"p1_walk04",
+			"p1_walk05",
+			"p1_walk06",
+			"p1_walk07",
+			"p1_walk08",
+			"p1_walk09",
+			"p1_walk10",
+			"p1_walk11"
 		}
 	};
 };

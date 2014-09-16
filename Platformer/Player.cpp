@@ -5,12 +5,12 @@
 
 Player::Player()
 {
-	playerSheet = new SpriteSheet("Assets/p2_spritesheet.xml");
+	playerSheet = new SpriteSheet("Assets/p1_spritesheet.xml");
 
 	playerScreenPos.x = 1024 / 2;
 	playerScreenPos.y = 768 / 2;
 
-	objFrame = playerSheet->GetFrame("p2_stand");
+	objFrame = playerSheet->GetFrame("p1_stand");
 }
 
 void Player::Load(std::string path, std::string texture, int x, int y, SDL_Renderer* pRenderer, b2World* world)
@@ -21,7 +21,7 @@ void Player::Load(std::string path, std::string texture, int x, int y, SDL_Rende
 	playerWorldPos.x = x;
 	playerWorldPos.y = y;
 
-	playerBodyDef.position.Set(x/sc, y/sc);
+	playerBodyDef.position.Set(x / sc, -y / sc);
 	playerBodyDef.type = b2_dynamicBody;
 	playerBody = world->CreateBody(&playerBodyDef);
 	playerBody->SetFixedRotation(true);
@@ -112,32 +112,32 @@ void Player::HandleInput()
 
 	if (!state[SDL_SCANCODE_RIGHT] || !state[SDL_SCANCODE_LEFT])
 	{
-		objFrame = playerSheet->GetFrame("p2_stand");
+		objFrame = playerSheet->GetFrame("p1_stand");
 	}
 
 	if (state[SDL_SCANCODE_DOWN])
 	{
-		objFrame = playerSheet->GetFrame("p2_duck");
-		playerBody->ApplyLinearImpulse(b2Vec2(0, -10), b2Vec2(0, 0), true);
+		objFrame = playerSheet->GetFrame("p1_duck");
+		playerBody->ApplyLinearImpulse(b2Vec2(0, -2), b2Vec2(0, 0), true);
 	}
 
 	if (state[SDL_SCANCODE_UP])
 	{
-		objFrame = playerSheet->GetFrame("p2_jump");
-		playerBody->ApplyLinearImpulse(b2Vec2(0, 10), b2Vec2(0, 0), true);
+		objFrame = playerSheet->GetFrame("p1_jump");
+		playerBody->ApplyLinearImpulse(b2Vec2(0, 3), b2Vec2(0, 0), true);
 	}
 
 	if (state[SDL_SCANCODE_LEFT])
 	{
 		playerFlip = true;
 		objFrame = playerSheet->GetFrame(walkFrames[int(((SDL_GetTicks() / 25) % 11))]);
-		playerBody->ApplyLinearImpulse(b2Vec2(-10, 0), b2Vec2(0, 0), true);
+		playerBody->ApplyLinearImpulse(b2Vec2(-2, 0), b2Vec2(0, 0), true);
 	}
 
 	if (state[SDL_SCANCODE_RIGHT])
 	{
 		playerFlip = false;
 		objFrame = playerSheet->GetFrame(walkFrames[int(((SDL_GetTicks() / 25) % 11))]);
-		playerBody->ApplyLinearImpulse(b2Vec2(10, 0), b2Vec2(0, 0), true);
+		playerBody->ApplyLinearImpulse(b2Vec2(2, 0), b2Vec2(0, 0), true);
 	}
 }

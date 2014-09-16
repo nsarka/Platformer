@@ -7,7 +7,7 @@
       - mapx, y, w, and h is the complete map size -->
 
 <!-- Level data; Spawn in middle of screen -->
-<leveldata name="Dev" spawnx="400" spawny="50"
+<leveldata name="Dev" spawnx="1263" spawny="395"
            mapx="0" mapy="0" mapw="1500" maph="2000" 
            levelendx="1024" levelendy="0" levelendw="1024" levelendh="768" >
 
@@ -125,10 +125,10 @@
   <tile name="cactus" posX="830" posY="146" physics="0" sound="1" action="false" />
   
   <!-- Right of start screen -->
-  <tile name="grass" posX="1100" posY="200" physics="1" sound="1" action="false" />
-  <tile name="grass" posX="1200" posY="100" physics="1" sound="1" action="false" />
-  <tile name="grass" posX="1300" posY="50" physics="1" sound="1" action="false" />
-  <tile name="grass" posX="1450" posY="175" physics="1" sound="1" action="false" />
+  <tile name="grass" posX="1100" posY="200" physics="2" sound="1" action="false" />
+  <tile name="grass" posX="1200" posY="100" physics="2" sound="1" action="false" />
+  <tile name="grass" posX="1300" posY="50" physics="2" sound="1" action="false" />
+  <tile name="grass" posX="1450" posY="175" physics="2" sound="1" action="false" />
 
   <!-- Bottom of start screen -->
   <tile name="grass" posX="100" posY="1000" physics="1" sound="1" action="false" />
