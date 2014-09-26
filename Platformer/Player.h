@@ -25,6 +25,8 @@ public:
 	int GetScreenPosX() { return playerScreenPos.x; }
 	int GetScreenPosY() { return playerScreenPos.y; }
 
+	b2Vec2 GetPlayerVelocity() { return playerBody->GetLinearVelocity(); }
+
 	int numFootContacts = 0;
 
 private:

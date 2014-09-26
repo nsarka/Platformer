@@ -37,7 +37,7 @@ void Player::Load(std::string path, std::string texture, int x, int y, SDL_Rende
 	playerFixtureDef.density = 1.0f;
 
 	// Override the default friction.
-	playerFixtureDef.friction = 5.0f;
+	playerFixtureDef.friction = 1.0f;
 
 	//He shouldnt bounce, i dont know why he still does
 	playerFixtureDef.restitution = 0.0f;
@@ -132,7 +132,7 @@ void Player::HandleInput()
 		if(numFootContacts > 0)
 		{
 			objFrame = playerSheet->GetFrame("p1_jump");
-			playerBody->ApplyLinearImpulse(b2Vec2(0, 6), b2Vec2(0, 0), true);
+			playerBody->ApplyLinearImpulse(b2Vec2(0, 10), b2Vec2(0, 0), true);
 		}
 	}
 
@@ -140,13 +140,21 @@ void Player::HandleInput()
 	{
 		playerFlip = true;
 		objFrame = playerSheet->GetFrame(walkFrames[int(((SDL_GetTicks() / 25) % 11))]);
-		playerBody->ApplyLinearImpulse(b2Vec2(-2, 0), b2Vec2(0, 0), true);
+
+		if (playerBody->GetLinearVelocity().x > -5.0)
+		{
+			playerBody->ApplyLinearImpulse(b2Vec2(-2, 0), b2Vec2(0, 0), true);
+		}
 	}
 
 	if (state[SDL_SCANCODE_RIGHT])
 	{
 		playerFlip = false;
 		objFrame = playerSheet->GetFrame(walkFrames[int(((SDL_GetTicks() / 25) % 11))]);
-		playerBody->ApplyLinearImpulse(b2Vec2(2, 0), b2Vec2(0, 0), true);
+
+		if (playerBody->GetLinearVelocity().x < 5.0)
+		{
+			playerBody->ApplyLinearImpulse(b2Vec2(2, 0), b2Vec2(0, 0), true);
+		}
 	}
 }

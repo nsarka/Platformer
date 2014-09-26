@@ -172,6 +172,11 @@ void GameSystem::UpdateDebugText()
 
 		DebugString.append("\nFoot Sensor: ");
 		DebugString.append(std::to_string(levelManager.player.numFootContacts));
+
+		DebugString.append("\nVelocity: ");
+		DebugString.append(std::to_string(levelManager.player.GetPlayerVelocity().x));
+		DebugString.append(" ");
+		DebugString.append(std::to_string(levelManager.player.GetPlayerVelocity().y));
 	}
 }
 
