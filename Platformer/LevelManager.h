@@ -9,6 +9,7 @@
 #include <string>
 #include <vector>
 #include "Box2d.h"
+#include "ContactListener.h"
 
 
 class LevelManager
@@ -55,4 +56,7 @@ private:
 
 	//Level end, default values initialized in constructor
 	SDL_Rect levelEndBoundaries;
+
+	//Contact listener
+	ContactListener* TheContactListener = 0;
 };

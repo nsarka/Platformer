@@ -37,13 +37,19 @@ void Player::Load(std::string path, std::string texture, int x, int y, SDL_Rende
 	playerFixtureDef.density = 1.0f;
 
 	// Override the default friction.
-	playerFixtureDef.friction = 0.3f;
+	playerFixtureDef.friction = 5.0f;
 
-	//Bounce?
-	playerFixtureDef.restitution = 0.1f;
+	//He shouldnt bounce, i dont know why he still does
+	playerFixtureDef.restitution = 0.0f;
 
 	// Add the shape to the body.
 	playerBody->CreateFixture(&playerFixtureDef);
+
+	//Create the foot sensor
+	dynamicBox.SetAsBox(1, 0.1, b2Vec2(0, 0-(objFrame.h/2/sc)), 0);
+	playerFixtureDef.isSensor = true;
+	b2Fixture* footSensorFixture = playerBody->CreateFixture(&playerFixtureDef);
+	footSensorFixture->SetUserData((void*)3);
 }
 
 void Player::drawBody(SDL_Renderer* renderer)
@@ -118,13 +124,16 @@ void Player::HandleInput()
 	if (state[SDL_SCANCODE_DOWN])
 	{
 		objFrame = playerSheet->GetFrame("p1_duck");
-		playerBody->ApplyLinearImpulse(b2Vec2(0, -2), b2Vec2(0, 0), true);
+		playerBody->ApplyLinearImpulse(b2Vec2(0, -1), b2Vec2(0, 0), true);
 	}
 
 	if (state[SDL_SCANCODE_UP])
 	{
-		objFrame = playerSheet->GetFrame("p1_jump");
-		playerBody->ApplyLinearImpulse(b2Vec2(0, 3), b2Vec2(0, 0), true);
+		if(numFootContacts > 0)
+		{
+			objFrame = playerSheet->GetFrame("p1_jump");
+			playerBody->ApplyLinearImpulse(b2Vec2(0, 6), b2Vec2(0, 0), true);
+		}
 	}
 
 	if (state[SDL_SCANCODE_LEFT])

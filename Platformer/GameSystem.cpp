@@ -169,6 +169,9 @@ void GameSystem::UpdateDebugText()
 
 		DebugString.append("\nWorld Y: ");
 		DebugString.append(std::to_string(levelManager.player.GetWorldPosY()));
+
+		DebugString.append("\nFoot Sensor: ");
+		DebugString.append(std::to_string(levelManager.player.numFootContacts));
 	}
 }
 

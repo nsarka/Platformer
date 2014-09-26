@@ -25,6 +25,8 @@ public:
 	int GetScreenPosX() { return playerScreenPos.x; }
 	int GetScreenPosY() { return playerScreenPos.y; }
 
+	int numFootContacts = 0;
+
 private:
 	SpriteSheet* playerSheet = 0;
 

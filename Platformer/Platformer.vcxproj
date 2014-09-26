@@ -96,6 +96,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="ContactListener.h" />
     <ClInclude Include="GameSystem.h" />
     <ClInclude Include="GameTile.h" />
     <ClInclude Include="LevelManager.h" />
