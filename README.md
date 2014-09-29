@@ -7,6 +7,6 @@ Art + music courtesy: http://open.commonly.cc/
 
 Rendering: https://www.libsdl.org/
 
-Physics (Soon): http://box2d.org/
+Physics: http://box2d.org/
 
 Level parsing: http://www.grinninglizard.com/tinyxml2/
