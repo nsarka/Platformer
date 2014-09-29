@@ -96,6 +96,12 @@ void Player::Update()
 	playerWorldPos.x = (point.x*sc) - (objFrame.w/2);
 	playerWorldPos.y = (-point.y*sc) - (objFrame.h / 2);
 
+	//Make him look like hes falling if his y velocity is fast
+	if (playerBody->GetLinearVelocity().y > 3 || playerBody->GetLinearVelocity().y < -3)
+	{
+		objFrame = playerSheet->GetFrame("p1_jump");
+	}
+
 	//Let the camera follow him
 	Camera::Instance()->SetFocus(playerWorldPos);
 }
