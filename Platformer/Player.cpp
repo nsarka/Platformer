@@ -37,7 +37,7 @@ void Player::Load(std::string path, std::string texture, int x, int y, SDL_Rende
 	playerFixtureDef.density = 1.0f;
 
 	// Override the default friction.
-	playerFixtureDef.friction = 1.0f;
+	playerFixtureDef.friction = 1.5f;
 
 	//He shouldnt bounce, i dont know why he still does
 	playerFixtureDef.restitution = 0.0f;
@@ -50,6 +50,16 @@ void Player::Load(std::string path, std::string texture, int x, int y, SDL_Rende
 	playerFixtureDef.isSensor = true;
 	b2Fixture* footSensorFixture = playerBody->CreateFixture(&playerFixtureDef);
 	footSensorFixture->SetUserData((void*)3);
+
+	//Create player sides to prevent friction
+	playerFixtureDef.isSensor = false;
+	playerFixtureDef.friction = 0.0f;
+	dynamicBox.SetAsBox(0.01, (objFrame.h/2/sc)-0.1, b2Vec2(0+objFrame.w/2/sc, 0.1), 0);
+	b2Fixture* playerSideRightFixture = playerBody->CreateFixture(&playerFixtureDef);
+
+	//Left side
+	dynamicBox.SetAsBox(0.01, (objFrame.h/2/sc)-0.1, b2Vec2(0-objFrame.w/2/sc, 0.1), 0);
+	b2Fixture* playerSideLeftFixture = playerBody->CreateFixture(&playerFixtureDef);
 }
 
 void Player::drawBody(SDL_Renderer* renderer)
