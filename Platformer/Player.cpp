@@ -115,6 +115,20 @@ void Player::HandleInput()
 	const Uint8 *state = SDL_GetKeyboardState(NULL);
 	int boundsCheckX = Camera::Instance()->IsOutOfMapBoundariesX(playerWorldPos.x);
 	int boundsCheckY = Camera::Instance()->IsOutOfMapBoundariesY(playerWorldPos.y);
+	int mouseX = 0;
+	int mouseY = 0;
+
+	if (SDL_GetMouseState(&mouseX, &mouseY) & SDL_BUTTON(SDL_BUTTON_LEFT))
+	{
+		if (SDL_GetTicks() >= playerDelay)
+		{
+			//..some magic happens
+			playerBody->SetTransform(b2Vec2(((mouseX + Camera::Instance()->GetOffset().x) / sc), ((-mouseY - Camera::Instance()->GetOffset().y) / sc)), NULL);
+			playerBody->SetAwake(true);
+			playerDelay = SDL_GetTicks() + 500;
+		}
+		
+	}
 
 	if (!state[SDL_SCANCODE_RIGHT] || !state[SDL_SCANCODE_LEFT])
 	{

@@ -44,6 +44,9 @@ private:
 	b2Body* playerBody;
 	b2FixtureDef playerFixtureDef;
 
+	//Used to make sure player doesnt teleport more than once per click
+	Uint32 playerDelay = 0;
+
 	//Is player facing left or right
 	bool playerFlip = false;
 
