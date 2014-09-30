@@ -50,7 +50,7 @@ void Player::Load(std::string path, std::string texture, int x, int y, SDL_Rende
 	playerFixtureDef.isSensor = true;
 	b2Fixture* footSensorFixture = playerBody->CreateFixture(&playerFixtureDef);
 	footSensorFixture->SetUserData((void*)3);
-
+	
 	//Create player sides to prevent friction
 	playerFixtureDef.isSensor = false;
 	playerFixtureDef.friction = 0.0f;
