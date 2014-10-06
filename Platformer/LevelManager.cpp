@@ -61,37 +61,40 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 		//Cycle through all elements in the spritesheet
 		for (tinyxml2::XMLElement* child = levelElement->FirstChildElement(); child != NULL; child = child->NextSiblingElement())
 		{
-			//Create a new tile to add to our master tile list
-			GameTile* tile = new GameTile();
-			SDL_Point point;
-			std::string tileName;
-			int physics;
-			int sound;
-			bool action;
-			SDL_Rect rect;
+			if (std::string(child->Name()) == "tile")
+			{
+				//Create a new tile to add to our master tile list
+				GameTile* tile = new GameTile();
+				SDL_Point point;
+				std::string tileName;
+				int physics;
+				int sound;
+				bool action;
+				SDL_Rect rect;
 
-			//Read XML document to get this info
-			tileName = std::string(child->Attribute("name"));
-			child->QueryIntAttribute("posX", &point.x);
-			child->QueryIntAttribute("posY", &point.y);
-			child->QueryIntAttribute("physics", &physics);
-			child->QueryIntAttribute("sound", &sound);
-			child->QueryBoolAttribute("action", &action);
+				//Read XML document to get this info
+				tileName = std::string(child->Attribute("name"));
+				child->QueryIntAttribute("posX", &point.x);
+				child->QueryIntAttribute("posY", &point.y);
+				child->QueryIntAttribute("physics", &physics);
+				child->QueryIntAttribute("sound", &sound);
+				child->QueryBoolAttribute("action", &action);
 
-			//Get the frame info from the spritesheet by name
-			rect = levelSheet->GetFrame(tileName);
+				//Get the frame info from the spritesheet by name
+				rect = levelSheet->GetFrame(tileName);
 
-			//Set the tiles information
-			tile->SetTileName(tileName);
-			tile->SetImageName(levelName);
-			tile->SetPoint(point);
-			tile->SetFrame(rect);
-			tile->SetPhysics(physics, world);
-			tile->SetSound(sound);
-			tile->SetAction(action);
+				//Set the tiles information
+				tile->SetTileName(tileName);
+				tile->SetImageName(levelName);
+				tile->SetPoint(point);
+				tile->SetFrame(rect);
+				tile->SetPhysics(physics, world);
+				tile->SetSound(sound);
+				tile->SetAction(action);
 
-			//Add tile to list
-			levelTiles.push_back(tile);
+				//Add tile to list
+				levelTiles.push_back(tile);
+			}
 		}
 
 		//Level is done, create player

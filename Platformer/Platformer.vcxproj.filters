@@ -16,9 +16,6 @@
     <Filter Include="XML Data">
       <UniqueIdentifier>{8bf6a5ab-deec-4e05-8f29-990f11246867}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Story/Level Ideas">
-      <UniqueIdentifier>{7f67f180-d2be-4b99-85d4-a9deaa44bb41}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -97,10 +94,5 @@
     <Xml Include="Assets\level01.xml">
       <Filter>XML Data</Filter>
     </Xml>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Story.txt">
-      <Filter>Story/Level Ideas</Filter>
-    </Text>
   </ItemGroup>
 </Project>
