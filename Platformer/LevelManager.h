@@ -30,6 +30,7 @@ public:
 
 	//Level data containers
 	std::vector<GameTile*> levelTiles;
+	std::vector<b2Joint*> levelJoints;
 
 	//Each level will have a player
 	Player player;

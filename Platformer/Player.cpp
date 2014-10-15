@@ -10,6 +10,14 @@ Player::Player()
 	playerScreenPos.x = 1024 / 2;
 	playerScreenPos.y = 768 / 2;
 
+	for (int i = 0; i <= playerDriftFrameTotal; i++)
+	{
+		playerDriftX[i] = 0;
+		playerDriftY[i] = 0;
+	}
+
+	playerDriftCounter = 0;
+
 	objFrame = playerSheet->GetFrame("p1_stand");
 }
 
@@ -66,7 +74,7 @@ void Player::drawBody(SDL_Renderer* renderer)
 {
 	SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
 	
-	int ox = Camera::Instance()->GetOffset().x;
+	int ox = Camera::Instance()->GetOffsetDrift().x;
 	int oy = Camera::Instance()->GetOffset().y;
 
 	//http://box2d.org/forum/viewtopic.php?f=3&t=1933
@@ -104,7 +112,11 @@ void Player::Update()
 	//Update him
 	b2Vec2 point = playerBody->GetPosition();
 	playerWorldPos.x = (point.x*sc) - (objFrame.w/2);
-	playerWorldPos.y = (-point.y*sc) - (objFrame.h / 2);
+	playerWorldPos.y = (-point.y*sc) - (objFrame.h/2);
+
+	//Change his screen position to show drift
+	playerScreenPos.x = playerWorldPos.x - Camera::Instance()->GetOffsetDrift().x;
+	playerScreenPos.y = playerWorldPos.y - Camera::Instance()->GetOffset().y;
 
 	//Make him look like hes falling if his y velocity is fast
 	if (playerBody->GetLinearVelocity().y > 3 || playerBody->GetLinearVelocity().y < -3)
@@ -112,8 +124,44 @@ void Player::Update()
 		objFrame = playerSheet->GetFrame("p1_jump");
 	}
 
+	//Set the drift to lag behind the player
+	CalcAndSetDrift();
+
 	//Let the camera follow him
 	Camera::Instance()->SetFocus(playerWorldPos);
+}
+
+void Player::CalcAndSetDrift()
+{
+	//Set drift according to average velocity of last n frames to eliminate the jerk of the camera if you run into a wall
+	if (playerDriftCounter >= playerDriftFrameTotal)
+	{
+		playerDriftCounter = 0;
+	}
+	else
+	{
+		playerDriftCounter++;
+	}
+
+	playerDriftX[playerDriftCounter] = playerBody->GetLinearVelocity().x * 20;
+	playerDriftY[playerDriftCounter] = playerBody->GetLinearVelocity().y * 20;
+
+	//std::cout << "Array Index: " << playerDriftCounter << " Drift X: " << playerDriftX[playerDriftCounter] << " Drift Y:" << playerDriftY[playerDriftCounter] << std::endl;
+
+	SDL_Point p;
+	p.x = 0;
+	p.y = 0;
+
+	for (int i = 0; i <= playerDriftFrameTotal; i++)
+	{
+		p.x += playerDriftX[i];
+		p.y += playerDriftY[i];
+	}
+
+	p.x /= playerDriftFrameTotal;
+	p.y /= playerDriftFrameTotal;
+
+	Camera::Instance()->SetDrift(p);
 }
 
 void Player::Draw(SDL_Renderer* pRenderer, bool debug)
@@ -123,7 +171,12 @@ void Player::Draw(SDL_Renderer* pRenderer, bool debug)
 		drawBody(pRenderer);
 	}
 
-	TextureManager::Instance()->DrawTexture(textureID, playerScreenPos.x, playerScreenPos.y, objFrame.w, objFrame.h, objFrame.x, objFrame.y, 0, pRenderer, playerFlip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+	TextureManager::Instance()->DrawTexture(textureID,
+		playerScreenPos.x,
+		playerScreenPos.y,
+		objFrame.w, objFrame.h, objFrame.x, objFrame.y,
+		0, pRenderer,
+		playerFlip ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
 }
 
 void Player::HandleInput()
@@ -131,20 +184,6 @@ void Player::HandleInput()
 	const Uint8 *state = SDL_GetKeyboardState(NULL);
 	int boundsCheckX = Camera::Instance()->IsOutOfMapBoundariesX(playerWorldPos.x);
 	int boundsCheckY = Camera::Instance()->IsOutOfMapBoundariesY(playerWorldPos.y);
-	int mouseX = 0;
-	int mouseY = 0;
-
-	if (SDL_GetMouseState(&mouseX, &mouseY) & SDL_BUTTON(SDL_BUTTON_LEFT))
-	{
-		if (SDL_GetTicks() >= playerDelay)
-		{
-			//..some magic happens
-			playerBody->SetTransform(b2Vec2(((mouseX + Camera::Instance()->GetOffset().x) / sc), ((-mouseY - Camera::Instance()->GetOffset().y) / sc)), NULL);
-			playerBody->SetAwake(true);
-			playerDelay = SDL_GetTicks() + 500;
-		}
-		
-	}
 
 	if (!state[SDL_SCANCODE_RIGHT] || !state[SDL_SCANCODE_LEFT])
 	{
@@ -186,5 +225,25 @@ void Player::HandleInput()
 		{
 			playerBody->ApplyLinearImpulse(b2Vec2(2, 0), b2Vec2(0, 0), true);
 		}
+	}
+
+	if (state[SDL_SCANCODE_C])
+	{
+		SDL_Point p;
+		p.x = 10;
+		p.y = 0;
+		Camera::Instance()->SetDrift(p);
+
+		std::cout << p.x << std::endl;
+	}
+
+	if (state[SDL_SCANCODE_X])
+	{
+		SDL_Point p;
+		p.x = -10;
+		p.y = 0;
+		Camera::Instance()->SetDrift(p);
+
+		std::cout << p.x << std::endl;
 	}
 }

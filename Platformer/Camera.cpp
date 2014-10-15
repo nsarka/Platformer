@@ -15,6 +15,31 @@ SDL_Point Camera::GetOffset()
 	return pos;
 }
 
+SDL_Point Camera::GetOffsetDrift()
+{
+	SDL_Point pos;
+
+	//512 is screen width / 2
+	pos.x = viewFocus.x - 512 + viewDrift.x;
+
+	//Screen height / 2 = 384
+	pos.y = viewFocus.y - 384 + viewDrift.y;
+
+	return pos;
+}
+
+bool Camera::IsCentered()
+{
+	if (viewDrift.x == 0 && viewDrift.y == 0)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
 //If the point is too far left or right, hes out of the map
 int Camera::IsOutOfMapBoundariesX(int posX)
 {

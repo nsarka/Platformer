@@ -20,7 +20,7 @@ public:
 	void SetImageName(std::string ImageName);
 	void SetTileName(std::string TileName);
 	void SetPoint(SDL_Point Point);
-	void SetPhysics(int Physics, b2World* world);
+	b2Body* SetPhysics(int Physics, b2World* world);
 	void SetSound(int Sound);
 	void SetAction(bool Action);
 

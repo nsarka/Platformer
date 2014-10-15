@@ -12,7 +12,7 @@ GameTile::GameTile()
 void GameTile::drawBody(SDL_Renderer* renderer)
 {
 	SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255);
-	int ox = Camera::Instance()->GetOffset().x;
+	int ox = Camera::Instance()->GetOffsetDrift().x;
 	int oy = Camera::Instance()->GetOffset().y;
 
 	//http://box2d.org/forum/viewtopic.php?f=3&t=1933
@@ -44,7 +44,7 @@ void GameTile::drawBody(SDL_Renderer* renderer)
 
 void GameTile::Draw(SDL_Renderer* pRenderer, bool tileDebug)
 {
-	if (IsTileInScreen(point.x - Camera::Instance()->GetOffset().x, point.y - Camera::Instance()->GetOffset().y, frame.w, frame.h))
+	if (IsTileInScreen(point.x - Camera::Instance()->GetOffsetDrift().x, point.y - Camera::Instance()->GetOffset().y, frame.w, frame.h))
 	{
 		//Get the angle of the body, convert to degrees, and draw
 		if (physics != 0)
@@ -57,7 +57,7 @@ void GameTile::Draw(SDL_Renderer* pRenderer, bool tileDebug)
 		}
 		
 		//Subtract camera offset so the tiles scroll
-		TextureManager::Instance()->DrawTexture(ImageName, point.x - Camera::Instance()->GetOffset().x, point.y - Camera::Instance()->GetOffset().y, frame.w, frame.h, frame.x, frame.y, angle, pRenderer, SDL_FLIP_NONE);
+		TextureManager::Instance()->DrawTexture(ImageName, point.x - Camera::Instance()->GetOffsetDrift().x, point.y - Camera::Instance()->GetOffset().y, frame.w, frame.h, frame.x, frame.y, angle, pRenderer, SDL_FLIP_NONE);
 	}
 
 	if (tileDebug == true && physics != 0)
@@ -126,7 +126,7 @@ void GameTile::SetPoint(SDL_Point Point)
 	point = Point;
 }
 
-void GameTile::SetPhysics(int Physics, b2World* world)
+b2Body* GameTile::SetPhysics(int Physics, b2World* world)
 {
 	physics = Physics;
 
@@ -161,7 +161,11 @@ void GameTile::SetPhysics(int Physics, b2World* world)
 
 		// Add the shape to the body.
 		tileBody->CreateFixture(&tileFixtureDef);
+
+		return tileBody;
 	}
+
+	return 0;
 }
 
 void GameTile::SetSound(int Sound)
