@@ -21,7 +21,7 @@ void LevelManager::LoadLevelSheet(const char* XMLPath)
 	levelSheet = new SpriteSheet(XMLPath);
 }
 
-void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL_Renderer* pRenderer)
+void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL_Renderer* pRenderer, bool playerExists)
 {
 	if (levelDoc.LoadFile(XMLPath) == XML_NO_ERROR)
 	{
@@ -224,7 +224,10 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 		}
 
 		//Level is done, create player
-		player.Load("Assets/Player/p1_spritesheet.png", "playertexture", spawnPoint.x, spawnPoint.y, pRenderer, world);
+		if (!playerExists)
+		{
+			player.Load("Assets/Player/p1_spritesheet.png", "playertexture", spawnPoint.x, spawnPoint.y, pRenderer, world);
+		}
 
 		//Player is made, set up the contact listener
 		TheContactListener = new ContactListener(player.numFootContacts);
@@ -243,7 +246,23 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 
 void LevelManager::CleanLevel()
 {
-	//Clear tile map, save player coords
+	//Clear tiles and joints, save player coords
+	for (std::vector<b2Joint*>::size_type i = 0; i != levelJoints.size(); i++)
+	{
+		world->DestroyJoint(levelJoints[i]);
+	}
+
+	for (std::vector<GameTile*>::size_type i = 0; i != levelTiles.size(); i++)
+	{
+		levelTiles[i]->Delete();
+	}
+
+	player.Freeze();
+
+	levelTiles.clear();
+	levelJoints.clear();
+
+	player.UnFreeze();
 }
 
 LevelManager::~LevelManager()

@@ -111,6 +111,10 @@
     <Xml Include="Assets\level01.xml">
       <SubType>Designer</SubType>
     </Xml>
+    <Xml Include="Assets\level02.xml">
+      <SubType>Designer</SubType>
+    </Xml>
+    <Xml Include="Assets\level03.xml" />
     <Xml Include="Assets\p1_spritesheet.xml">
       <SubType>Designer</SubType>
     </Xml>

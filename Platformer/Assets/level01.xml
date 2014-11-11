@@ -13,7 +13,7 @@
 -->
 
 <!-- Level data; Spawn in middle of screen -->
-<leveldata name="Dev" spawnx="370" spawny="395"
+<leveldata name="level01" spawnx="370" spawny="395"
            mapx="0" mapy="0" mapw="1500" maph="2000"
            levelendx="1024" levelendy="0" levelendw="1024" levelendh="768" >
 

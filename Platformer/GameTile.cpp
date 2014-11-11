@@ -160,7 +160,8 @@ b2Body* GameTile::SetPhysics(int Physics, b2World* world)
 		tileFixtureDef.restitution = 0.1f;
 
 		// Add the shape to the body.
-		tileBody->CreateFixture(&tileFixtureDef);
+		b2Fixture* tileFixture = tileBody->CreateFixture(&tileFixtureDef);
+		tileFixture->SetUserData((void*)8);
 
 		return tileBody;
 	}
@@ -176,6 +177,14 @@ void GameTile::SetSound(int Sound)
 void GameTile::SetAction(bool Action)
 {
 	action = Action;
+}
+
+void GameTile::Delete()
+{
+	if (tileBody)
+	{
+		tileBody->GetWorld()->DestroyBody(tileBody);
+	}
 }
 
 GameTile::~GameTile()

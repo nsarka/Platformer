@@ -94,5 +94,11 @@
     <Xml Include="Assets\level01.xml">
       <Filter>XML Data</Filter>
     </Xml>
+    <Xml Include="Assets\level02.xml">
+      <Filter>XML Data</Filter>
+    </Xml>
+    <Xml Include="Assets\level03.xml">
+      <Filter>XML Data</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

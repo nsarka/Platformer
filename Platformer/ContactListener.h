@@ -16,39 +16,71 @@ private:
 
 	void BeginContact(b2Contact* contact)
 	{
-		//check if fixture A was the foot sensor
+		//Check the fixture to see what it was
 		void* fixtureUserData = contact->GetFixtureA()->GetUserData();
 
-		if ((int)fixtureUserData == 3)
+		if ((int)fixtureUserData == 3) //Player feet
 		{
 			FootContacts++;
 		}
+		else if ((int)fixtureUserData == 6) //Player
+		{
+			
+		}
+		else if ((int)fixtureUserData == 8) //Tile
+		{
+			
+		}
 
-		//check if fixture B was the foot sensor
+		//Check the fixture to see what it was
 		fixtureUserData = contact->GetFixtureB()->GetUserData();
 
-		if ((int)fixtureUserData == 3)
+		if ((int)fixtureUserData == 3) //Player feet
 		{
 			FootContacts++;
+		}
+		else if ((int)fixtureUserData == 6) //Player body
+		{
+			
+		}
+		else if ((int)fixtureUserData == 8) //Tile
+		{
+			
 		}
 	}
 
 	void EndContact(b2Contact* contact)
 	{
-		//check if fixture A was the foot sensor
+		//Check the fixture to see what it was
 		void* fixtureUserData = contact->GetFixtureA()->GetUserData();
 
-		if ((int)fixtureUserData == 3)
+		if ((int)fixtureUserData == 3) //Player feet
 		{
 			FootContacts--;
 		}
+		else if ((int)fixtureUserData == 6) //Player body
+		{
 
-		//check if fixture B was the foot sensor
+		}
+		else if ((int)fixtureUserData == 8) // Tile
+		{
+
+		}
+
+		//Check the fixture to see what it was
 		fixtureUserData = contact->GetFixtureB()->GetUserData();
 
-		if ((int)fixtureUserData == 3)
+		if ((int)fixtureUserData == 3) //Player feet
 		{
 			FootContacts--;
+		}
+		else if ((int)fixtureUserData == 6) //Player body
+		{
+			
+		}
+		else if ((int)fixtureUserData == 8) //Tile
+		{
+			
 		}
 	}
 };

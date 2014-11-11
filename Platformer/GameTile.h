@@ -33,6 +33,9 @@ public:
 	//Is this tile in screen
 	bool IsTileInScreen(int x, int y, int w, int h);
 
+	//Clean
+	void Delete();
+
 private:
 	SDL_Rect frame;
 	std::string ImageName;

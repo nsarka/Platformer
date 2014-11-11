@@ -51,7 +51,8 @@ void Player::Load(std::string path, std::string texture, int x, int y, SDL_Rende
 	playerFixtureDef.restitution = 0.0f;
 
 	// Add the shape to the body.
-	playerBody->CreateFixture(&playerFixtureDef);
+	b2Fixture* playerFixture = playerBody->CreateFixture(&playerFixtureDef);
+	playerFixture->SetUserData((void*)6);
 
 	//Create the foot sensor
 	dynamicBox.SetAsBox(1, 0.1, b2Vec2(0, 0-(objFrame.h/2/sc)), 0);
@@ -146,8 +147,6 @@ void Player::CalcAndSetDrift()
 	playerDriftX[playerDriftCounter] = playerBody->GetLinearVelocity().x * 20;
 	playerDriftY[playerDriftCounter] = playerBody->GetLinearVelocity().y * 20;
 
-	//std::cout << "Array Index: " << playerDriftCounter << " Drift X: " << playerDriftX[playerDriftCounter] << " Drift Y:" << playerDriftY[playerDriftCounter] << std::endl;
-
 	SDL_Point p;
 	p.x = 0;
 	p.y = 0;
@@ -192,6 +191,8 @@ void Player::HandleInput()
 
 	if (state[SDL_SCANCODE_DOWN])
 	{
+		playerDuck = true;
+		
 		objFrame = playerSheet->GetFrame("p1_duck");
 		playerBody->ApplyLinearImpulse(b2Vec2(0, -1), b2Vec2(0, 0), true);
 	}
@@ -226,24 +227,49 @@ void Player::HandleInput()
 			playerBody->ApplyLinearImpulse(b2Vec2(2, 0), b2Vec2(0, 0), true);
 		}
 	}
+}
 
-	if (state[SDL_SCANCODE_C])
+void Player::ToggleNoclip()
+{
+	if (!playerNoclip)
 	{
-		SDL_Point p;
-		p.x = 10;
-		p.y = 0;
-		Camera::Instance()->SetDrift(p);
-
-		std::cout << p.x << std::endl;
+		std::cout << "Noclip ON" << std::endl;
+		playerNoclip = true;
+		playerBody->SetType(b2_kinematicBody);
 	}
-
-	if (state[SDL_SCANCODE_X])
+	else
 	{
-		SDL_Point p;
-		p.x = -10;
-		p.y = 0;
-		Camera::Instance()->SetDrift(p);
+		std::cout << "Noclip OFF" << std::endl;
+		playerNoclip = false;
+		playerBody->SetType(b2_dynamicBody);
+	}
+}
 
-		std::cout << p.x << std::endl;
+void Player::ToggleFreeze()
+{
+	if (!playerFreeze)
+	{
+		playerFreeze = true;
+		std::cout << "Frozen" << std::endl;
+		Freeze();
+	}
+	else
+	{
+		playerFreeze = false;
+		std::cout << "Unfrozen" << std::endl;
+		UnFreeze();
+	}
+}
+
+void Player::Freeze()
+{
+	playerBody->SetType(b2_staticBody);
+}
+
+void Player::UnFreeze()
+{
+	if(playerBody != 0)
+	{
+		playerBody->SetType(b2_dynamicBody);
 	}
 }

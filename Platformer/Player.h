@@ -18,6 +18,10 @@ public:
 	void Load(std::string path, std::string texture, int x, int y, SDL_Renderer* pRenderer, b2World* world);
 
 	void HandleInput();
+	void Freeze();
+	void UnFreeze();
+	void ToggleNoclip();
+	void ToggleFreeze();
 
 	int GetWorldPosX() { return playerWorldPos.x; }
 	int GetWorldPosY() { return playerWorldPos.y; }
@@ -53,6 +57,15 @@ private:
 
 	//Is player facing left or right
 	bool playerFlip = false;
+
+	//Player noclip
+	bool playerNoclip = false;
+
+	//Player freeze
+	bool playerFreeze = false;
+
+	//Player duck
+	bool playerDuck = false;
 
 	//Array so Player::Update() knows which frames are the ones for walking
 	std::array<std::string, 11> walkFrames

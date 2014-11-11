@@ -19,7 +19,7 @@ public:
 	~LevelManager();
 
 	//Get the level's data
-	void LoadLevelData(const char* ImagePath, const char* XMLPath, SDL_Renderer* pRenderer);
+	void LoadLevelData(const char* ImagePath, const char* XMLPath, SDL_Renderer* pRenderer, bool playerExists);
 	void LoadLevelSheet(const char* XMLPath);
 
 	//Get info

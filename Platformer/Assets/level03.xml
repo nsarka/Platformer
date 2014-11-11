@@ -1,0 +1,105 @@
+<?xml version="1.0"?>
+
+<!--
+      tile
+      - physics; 0 = none, 1 = static, 2 = dynamic, 3 = kinematic
+      - sound is the footstep noise and/or the action sound
+      - if action = true, the tile will do something when its touched
+      - levelendx, y, w, and h is the rectangle a player has to be in to win
+      - mapx, y, w, and h is the complete map size
+
+      joint_revolute
+      - The next two tiles in the list will be Body A and Body B for the joint respectively
+-->
+
+<!-- Level data; Spawn in middle of screen -->
+<leveldata name="level03" spawnx="600" spawny="395"
+           mapx="0" mapy="0" mapw="1500" maph="2000"
+           levelendx="1024" levelendy="0" levelendw="1024" levelendh="768" >
+
+  <!-- Tile data // Things will be drawn on the list in order as it goes down, so 
+       things in the front should be placed last here -->
+
+  <!-- Revolute Joint -->
+  <joint_revolute localanchor_a_x="0.0" localanchor_a_y="0.0" localanchor_b_x="9.0" localanchor_b_y="0.0" collide_connected="false" enable_limit="false" upperlimit="45" lowerlimit="-45" enable_motor="true" motor_torque="20" motor_speed="90"/>
+  <tile name="boxEmpty" posX="100" posY="100" physics="1" sound="1" action="false" />
+  <tile name="boxEmpty" posX="505" posY="340" physics="2" sound="1" action="false" />
+  
+  <!-- Ground -->
+  <tile name="sandMid" posX="70" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="140" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="210" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="280" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="350" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="420" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="490" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="560" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="630" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="700" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="770" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="840" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="910" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="980" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandCenter" posX="0" posY="558" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="70" posY="558" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="140" posY="558" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="210" posY="558" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="280" posY="558" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="350" posY="558" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="420" posY="558" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="490" posY="558" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="560" posY="558" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="630" posY="558" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="700" posY="558" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="770" posY="558" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="840" posY="558" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="910" posY="558" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="980" posY="558" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="0" posY="628" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="70" posY="628" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="140" posY="628" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="210" posY="628" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="280" posY="628" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="350" posY="628" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="420" posY="628" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="490" posY="628" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="560" posY="628" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="630" posY="628" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="700" posY="628" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="770" posY="628" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="840" posY="628" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="910" posY="628" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="980" posY="628" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="0" posY="698" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="70" posY="698" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="140" posY="698" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="210" posY="698" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="280" posY="698" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="350" posY="698" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="420" posY="698" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="490" posY="698" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="560" posY="698" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="630" posY="698" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="700" posY="698" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="770" posY="698" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="840" posY="698" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="910" posY="698" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="980" posY="698" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="0" posY="768" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="70" posY="768" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="140" posY="768" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="210" posY="768" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="280" posY="768" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="350" posY="768" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="420" posY="768" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="490" posY="768" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="560" posY="768" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="630" posY="768" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="700" posY="768" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="770" posY="768" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="840" posY="768" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="910" posY="768" physics="0" sound="1" action="false" />
+  <tile name="sandCenter" posX="980" posY="768" physics="0" sound="1" action="false" />
+  <tile name="sandMid" posX="1050" posY="488" physics="1" sound="1" action="false" />
+  
+</leveldata>
