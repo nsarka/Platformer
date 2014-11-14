@@ -22,16 +22,26 @@
 
   <!-- Revolute Joint -->
   <joint_revolute localanchor_a_x="0.0" localanchor_a_y="0.0" localanchor_b_x="9.0" localanchor_b_y="0.0" collide_connected="false" enable_limit="false" upperlimit="45" lowerlimit="-45" enable_motor="true" motor_torque="20" motor_speed="90"/>
-  <tile name="boxEmpty" posX="100" posY="100" physics="1" sound="1" action="false" />
+  <tile name="boxEmpty" posX="65" posY="80" physics="1" sound="1" action="false" />
   <tile name="boxEmpty" posX="505" posY="340" physics="2" sound="1" action="false" />
+
+  <!-- Jumps -->
+  <tile name="sandRight" posX="490" posY="-125" physics="1" sound="1" action="false" />
+  <tile name="sandLeft" posX="280" posY="-75" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="350" posY="-125" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="420" posY="-125" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="280" posY="418" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="350" posY="418" physics="1" sound="1" action="false" />
+  <tile name="sandMid" posX="420" posY="418" physics="1" sound="1" action="false" />
+  <tile name="sand" posX="200" posY="0" physics="1" sound="1" action="false" />
   
   <!-- Ground -->
   <tile name="sandMid" posX="70" posY="488" physics="1" sound="1" action="false" />
   <tile name="sandMid" posX="140" posY="488" physics="1" sound="1" action="false" />
   <tile name="sandMid" posX="210" posY="488" physics="1" sound="1" action="false" />
-  <tile name="sandMid" posX="280" posY="488" physics="1" sound="1" action="false" />
-  <tile name="sandMid" posX="350" posY="488" physics="1" sound="1" action="false" />
-  <tile name="sandMid" posX="420" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandCenter" posX="280" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandCenter" posX="350" posY="488" physics="1" sound="1" action="false" />
+  <tile name="sandCenter" posX="420" posY="488" physics="1" sound="1" action="false" />
   <tile name="sandMid" posX="490" posY="488" physics="1" sound="1" action="false" />
   <tile name="sandMid" posX="560" posY="488" physics="1" sound="1" action="false" />
   <tile name="sandMid" posX="630" posY="488" physics="1" sound="1" action="false" />

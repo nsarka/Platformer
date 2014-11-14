@@ -48,7 +48,7 @@ GameSystem::GameSystem()
 
 	//Initialize the level; Each level owns and loads all LevelObjects and GameObjects, GameSystem class only owns a vector list of the two
 	levelManager.LoadLevelSheet("Assets/tileset_spritesheet.xml");
-	levelManager.LoadLevelData("Assets/Tiles/tiles_spritesheet.png", "Assets/level02.xml", pRenderer, false);
+	levelManager.LoadLevelData("Assets/Tiles/tiles_spritesheet.png", "Assets/level03.xml", pRenderer, false);
 }
 
 //System destructor, clean up SDL
@@ -96,16 +96,6 @@ void GameSystem::HandleEvents()
 				levelManager.CleanLevel();
 				levelManager.LoadLevelSheet("Assets/tileset_spritesheet.xml");
 				levelManager.LoadLevelData("Assets/Tiles/tiles_spritesheet.png", levelstring.c_str(), pRenderer, true);
-			}
-
-			if (Event.key.keysym.sym == SDLK_F3)
-			{
-				levelManager.player.ToggleFreeze();
-			}
-
-			if (Event.key.keysym.sym == SDLK_F4)
-			{
-				levelManager.player.ToggleNoclip();
 			}
 			break;
 

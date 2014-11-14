@@ -52,6 +52,7 @@ private:
 	const static int playerDriftFrameTotal = 75;
 	float32 playerDriftX[playerDriftFrameTotal];
 	float32 playerDriftY[playerDriftFrameTotal];
+	float32 playerNextToggle = 0.0;
 
 	void CalcAndSetDrift();
 

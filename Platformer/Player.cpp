@@ -227,6 +227,26 @@ void Player::HandleInput()
 			playerBody->ApplyLinearImpulse(b2Vec2(2, 0), b2Vec2(0, 0), true);
 		}
 	}
+
+	if (state[SDL_SCANCODE_F3])
+	{
+		//Toggles need a second to cool down
+		if (SDL_GetTicks() >= playerNextToggle)
+		{
+			ToggleFreeze();
+			playerNextToggle += SDL_GetTicks() + 1000.0f;
+		}
+	}
+
+	if (state[SDL_SCANCODE_F4])
+	{
+		//Toggles need a second to cool down
+		if (SDL_GetTicks() >= playerNextToggle)
+		{
+			ToggleNoclip();
+			playerNextToggle += SDL_GetTicks() + 1000.0f;
+		}
+	}
 }
 
 void Player::ToggleNoclip()
