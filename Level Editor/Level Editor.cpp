@@ -1,14 +1,14 @@
 #include "SDL.h"
-#include "GameSystem.h"
+#include "EditorSystem.h"
 
-GameSystem* gamesys = 0;
+EditorSystem* gamesys = 0;
 
 int main(int argc, char* args[])
 {
 	//SDL init in constructor
-	gamesys = new GameSystem();
+	gamesys = new EditorSystem();
 
-	while(gamesys->Running())
+	while (gamesys->Running())
 	{
 		gamesys->HandleEvents();
 		gamesys->Render();
@@ -23,3 +23,4 @@ int main(int argc, char* args[])
 
 	return 0;
 }
+

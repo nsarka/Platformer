@@ -1,20 +1,17 @@
 #pragma once
 #include "SDL.h"
 #include "SDL_ttf.h"
-#include "Textures.h"
-#include "LevelManager.h"
-#include "Player.h"
 #include "SDL_framerate.h"
 #include <iostream>
 #include <string>
 #include <vector>
 
 
-class GameSystem
+class EditorSystem
 {
 public:
-	GameSystem();
-	~GameSystem();
+	EditorSystem();
+	~EditorSystem();
 
 	//Keep game loop going
 	bool Running() { return bRunning; }
@@ -41,6 +38,4 @@ private:
 	SDL_Color TextColor;
 
 	std::string DebugString = "null";
-
-	LevelManager levelManager;
 };
