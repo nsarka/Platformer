@@ -87,6 +87,8 @@ void EditorSystem::HandleEvents()
 				std::cout << "Loading " << levelname << ".xml" << std::endl;
 
 				std::string levelstring = "Assets/" + levelname + ".xml";
+
+				//do something with levelstring
 			}
 			break;
 

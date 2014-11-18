@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<spritesheet>
+  
+    <!-- Spritesheet frames, xpos, ypos, width, height -->
+    <hud_0 xpos="201" ypos="96" width="30" height="38"/>
+	<hud_1 xpos="213" ypos="175" width="26" height="37"/>
+	<hud_2 xpos="135" ypos="137" width="32" height="38"/>
+	<hud_3 xpos="199" ypos="136" width="28" height="38"/>
+	<hud_4 xpos="154" ypos="176" width="29" height="38"/>
+	<hud_5 xpos="184" ypos="175" width="28" height="38"/>
+	<hud_6 xpos="123" ypos="178" width="30" height="38"/>
+	<hud_7 xpos="168" ypos="96" width="32" height="39"/>
+	<hud_8 xpos="135" ypos="96" width="32" height="40"/>
+	<hud_9 xpos="90" ypos="178" width="32" height="39"/>
+	<hud_coins xpos="54" ypos="46" width="47" height="47"/>
+	<hud_heartEmpty xpos="0" ypos="0" width="53" height="45"/>
+	<hud_heartFull xpos="54" ypos="0" width="53" height="45"/>
+	<hud_heartHalf xpos="0" ypos="46" width="53" height="45"/>
+	<hud_keyBlue xpos="0" ypos="92" width="44" height="40"/>
+	<hud_keyBlue_disabled xpos="0" ypos="133" width="44" height="40"/>
+	<hud_keyGreen_disabled xpos="45" ypos="94" width="44" height="40"/>
+	<hud_keyGreen xpos="0" ypos="174" width="44" height="40"/>
+	<hud_keyRed xpos="45" ypos="135" width="44" height="40"/>
+	<hud_keyRed_disabled xpos="90" ypos="96" width="44" height="40"/>
+	<hud_keyYellow xpos="45" ypos="176" width="44" height="40"/>
+	<hud_keyYellow_disabled xpos="90" ypos="137" width="44" height="40"/>
+	<hud_p1 xpos="108" ypos="0" width="47" height="47"/>
+	<hud_p1_alt xpos="102" ypos="48" width="47" height="47"/>
+	<hud_p2 xpos="156" ypos="0" width="47" height="47"/>
+	<hud_p2_alt xpos="150" ypos="48" width="47" height="47"/>
+	<hud_p3 xpos="204" ypos="0" width="47" height="47"/>
+	<hud_p3_alt xpos="198" ypos="48" width="47" height="47"/>
+	<hud_x xpos="168" ypos="136" width="30" height="28"/>
+	
+</spritesheet>

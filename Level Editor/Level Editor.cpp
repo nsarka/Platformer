@@ -1,25 +1,25 @@
 #include "SDL.h"
 #include "EditorSystem.h"
 
-EditorSystem* gamesys = 0;
+EditorSystem* editsys = 0;
 
 int main(int argc, char* args[])
 {
 	//SDL init in constructor
-	gamesys = new EditorSystem();
+	editsys = new EditorSystem();
 
-	while (gamesys->Running())
+	while (editsys->Running())
 	{
-		gamesys->HandleEvents();
-		gamesys->Render();
-		gamesys->Update();
+		editsys->HandleEvents();
+		editsys->Render();
+		editsys->Update();
 
 		//Cap our framerate
-		gamesys->Delay();
+		editsys->Delay();
 	}
 
 	//System destructor, clean up SDL
-	delete gamesys;
+	delete editsys;
 
 	return 0;
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<spritesheet>
+  
+    <!-- Spritesheet frames, xpos, ypos, width, height -->
+  <blockerBody xpos="203" ypos="0" width="51" height="51"/>
+	<blockerMad xpos="136" ypos="66" width="51" height="51"/>
+	<blockerSad xpos="188" ypos="66" width="51" height="51"/>
+	<fishDead xpos="0" ypos="69" width="66" height="42"/>
+	<fishSwim1 xpos="76" ypos="0" width="66" height="42"/>
+	<fishSwim2 xpos="73" ypos="43" width="62" height="43"/>
+	<flyDead xpos="143" ypos="0" width="59" height="33"/>
+	<flyFly1 xpos="0" ypos="32" width="72" height="36"/>
+	<flyFly2 xpos="0" ypos="0" width="75" height="31"/>
+	<pokerMad xpos="255" ypos="0" width="48" height="146"/>
+	<pokerSad xpos="304" ypos="0" width="48" height="146"/>
+	<slimeDead xpos="0" ypos="112" width="59" height="12"/>
+	<slimeWalk1 xpos="52" ypos="125" width="50" height="28"/>
+	<slimeWalk2 xpos="0" ypos="125" width="51" height="26"/>
+	<snailShell xpos="103" ypos="119" width="44" height="30"/>
+	<snailShell_upsidedown xpos="148" ypos="118" width="44" height="30"/>
+	<snailWalk1 xpos="143" ypos="34" width="54" height="31"/>
+	<snailWalk2 xpos="67" ypos="87" width="57" height="31"/>
+
+</spritesheet>
