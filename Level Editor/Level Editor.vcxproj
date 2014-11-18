@@ -84,6 +84,14 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EditorSystem.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="resource1.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="PlatformerLevelEditor.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Level Editor.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
