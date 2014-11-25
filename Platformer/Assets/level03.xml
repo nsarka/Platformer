@@ -15,7 +15,8 @@
 <!-- Level data; Spawn in middle of screen -->
 <leveldata name="level03" spawnx="600" spawny="395"
            mapx="0" mapy="0" mapw="1500" maph="2000"
-           levelendx="1024" levelendy="0" levelendw="1024" levelendh="768" >
+           levelendx="1024" levelendy="0" levelendw="1024" levelendh="768"
+           skyr="193" skyg="154" skyb="107" skya="255">
 
   <!-- Tile data // Things will be drawn on the list in order as it goes down, so 
        things in the front should be placed last here -->

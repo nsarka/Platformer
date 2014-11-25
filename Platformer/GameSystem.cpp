@@ -10,9 +10,6 @@ GameSystem::GameSystem()
 	pWindow = SDL_CreateWindow("Platformer by Magnolium", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1024, 768, 0);
 	pRenderer = SDL_CreateRenderer(pWindow, -1, 0);
 
-	//Set the default draw color to a sky color
-	SDL_SetRenderDrawColor(pRenderer, 208, 244, 247, 255);
-
 	//Initialize framerate manager
 	SDL_initFramerate(&fpsManager);
 
@@ -49,6 +46,8 @@ GameSystem::GameSystem()
 	//Initialize the level; Each level owns and loads all LevelObjects and GameObjects, GameSystem class only owns a vector list of the two
 	levelManager.LoadLevelSheet("Assets/tileset_spritesheet.xml");
 	levelManager.LoadLevelData("Assets/Tiles/tiles_spritesheet.png", "Assets/level03.xml", pRenderer, false);
+
+	SDL_SetRenderDrawColor(pRenderer, (Uint8)levelManager.skyColorR, (Uint8)levelManager.skyColorG, (Uint8)levelManager.skyColorB, (Uint8)levelManager.skyColorA);
 }
 
 //System destructor, clean up SDL

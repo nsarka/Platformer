@@ -84,7 +84,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="EditorSystem.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="resource1.h" />
   </ItemGroup>
   <ItemGroup>

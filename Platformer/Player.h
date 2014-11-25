@@ -22,6 +22,7 @@ public:
 	void UnFreeze();
 	void ToggleNoclip();
 	void ToggleFreeze();
+	void SetSky(int skyr, int skyg, int skyb, int skya);
 
 	int GetWorldPosX() { return playerWorldPos.x; }
 	int GetWorldPosY() { return playerWorldPos.y; }
@@ -32,6 +33,12 @@ public:
 	b2Vec2 GetPlayerVelocity() { return playerBody->GetLinearVelocity(); }
 
 	int numFootContacts = 0;
+
+	//Sky color for debug draw function
+	int skyColorR = 0;
+	int skyColorG = 0;
+	int skyColorB = 0;
+	int skyColorA = 0;
 
 private:
 	SpriteSheet* playerSheet = 0;

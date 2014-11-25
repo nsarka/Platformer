@@ -8,7 +8,7 @@
 class GameTile
 {
 public:
-	GameTile();
+	GameTile(int skyr, int skyg, int skyb, int skya);
 	~GameTile();
 
 	void Draw(SDL_Renderer* pRenderer, bool tileDebug);
@@ -32,6 +32,12 @@ public:
 
 	//Is this tile in screen
 	bool IsTileInScreen(int x, int y, int w, int h);
+
+	//Sky color for debug draw function
+	int skyColorR = 0;
+	int skyColorG = 0;
+	int skyColorB = 0;
+	int skyColorA = 0;
 
 	//Clean
 	void Delete();

@@ -42,6 +42,13 @@ public:
 	int32 positionIterations = 2;
 	float sc = 16.0;
 
+	/*Sky color - id use SDL_Color but sdl color uses Uint8 instead of int
+	i thought of type casting afterwards but im too lazy to change it. ill do it later haha */
+	int skyColorR = 0;
+	int skyColorG = 0;
+	int skyColorB = 0;
+	int skyColorA = 0;
+
 private:
 	//Level name parsed in levelDoc
 	std::string levelName = "null: call LoadLevelSheet before LoadLevelData";

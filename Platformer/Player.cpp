@@ -21,6 +21,14 @@ Player::Player()
 	objFrame = playerSheet->GetFrame("p1_stand");
 }
 
+void Player::SetSky(int skyr, int skyg, int skyb, int skya)
+{
+	skyColorR = skyr;
+	skyColorG = skyg;
+	skyColorB = skyb;
+	skyColorA = skya;
+}
+
 void Player::Load(std::string path, std::string texture, int x, int y, SDL_Renderer* pRenderer, b2World* world)
 {
 	TextureManager::Instance()->LoadTexture(path, texture, pRenderer);
@@ -102,7 +110,7 @@ void Player::drawBody(SDL_Renderer* renderer)
 		}
 	}
 
-	SDL_SetRenderDrawColor(renderer, 208, 244, 247, 255);
+	SDL_SetRenderDrawColor(renderer, skyColorR, skyColorG, skyColorB, skyColorA);
 }
 
 void Player::Update()

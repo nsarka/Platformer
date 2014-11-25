@@ -3,9 +3,12 @@
 #include "Util.h"
 
 
-GameTile::GameTile()
+GameTile::GameTile(int skyr, int skyg, int skyb, int skya)
 {
-
+	skyColorR = skyr;
+	skyColorG = skyg;
+	skyColorB = skyb;
+	skyColorA = skya;
 }
 
 /* Thank you Erin Catto */
@@ -39,7 +42,7 @@ void GameTile::drawBody(SDL_Renderer* renderer)
 		}
 	}
 
-	SDL_SetRenderDrawColor(renderer, 208, 244, 247, 255);
+	SDL_SetRenderDrawColor(renderer, skyColorR, skyColorG, skyColorB, skyColorA);
 }
 
 void GameTile::Draw(SDL_Renderer* pRenderer, bool tileDebug)

@@ -10,7 +10,7 @@ EditorSystem::EditorSystem()
 	pRenderer = SDL_CreateRenderer(pWindow, -1, 0);
 
 	//Set the default draw color to a sky color
-	SDL_SetRenderDrawColor(pRenderer, 208, 244, 247, 255);
+	SDL_SetRenderDrawColor(pRenderer, 0, 0, 0, 255);
 
 	//Initialize framerate manager
 	SDL_initFramerate(&fpsManager);
@@ -150,7 +150,6 @@ void EditorSystem::UpdateDebugText()
 	{
 		//String would get big really fast if we didnt reset it
 		DebugString = "Level: ";
-		//DebugString.append(levelManager.GetLevelName());
 
 		DebugString.append("\nGame FPS: ");
 		DebugString.append(std::to_string(SDL_getFramerate(&fpsManager)));

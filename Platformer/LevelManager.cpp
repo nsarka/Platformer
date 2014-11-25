@@ -58,13 +58,19 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 		levelElement->QueryIntAttribute("levelendw", &levelEndBoundaries.w);
 		levelElement->QueryIntAttribute("levelendh", &levelEndBoundaries.h);
 
+		//Query sky color
+		levelElement->QueryIntAttribute("skyr", &skyColorR);
+		levelElement->QueryIntAttribute("skyg", &skyColorG);
+		levelElement->QueryIntAttribute("skyb", &skyColorB);
+		levelElement->QueryIntAttribute("skya", &skyColorA);
+
 		//Cycle through all elements in the spritesheet
 		for (tinyxml2::XMLElement* child = levelElement->FirstChildElement(); child != NULL; child = child->NextSiblingElement())
 		{
 			if (std::string(child->Name()) == "tile")
 			{
 				//Create a new tile to add to our master tile list
-				GameTile* tile = new GameTile();
+				GameTile* tile = new GameTile(skyColorR, skyColorG, skyColorB, skyColorA);
 				SDL_Point point;
 				std::string tileName;
 				int physics;
@@ -128,7 +134,7 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 				if (std::string(child->Name()) == "tile")
 				{
 					//Create a new tile to add to our master tile list
-					GameTile* tile = new GameTile();
+					GameTile* tile = new GameTile(skyColorR, skyColorG, skyColorB, skyColorA);
 					SDL_Point point;
 					std::string tileName;
 					int physics;
@@ -165,7 +171,7 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 					if (std::string(child->Name()) == "tile")
 					{
 						//Create a new tile to add to our master tile list
-						GameTile* tileB = new GameTile();
+						GameTile* tileB = new GameTile(skyColorR, skyColorG, skyColorB, skyColorA);
 
 						int physicsB;
 
@@ -228,6 +234,8 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 		{
 			player.Load("Assets/Player/p1_spritesheet.png", "playertexture", spawnPoint.x, spawnPoint.y, pRenderer, world);
 		}
+
+		player.SetSky(skyColorR, skyColorG, skyColorB, skyColorA);
 
 		//Player is made, set up the contact listener
 		TheContactListener = new ContactListener(player.numFootContacts);
