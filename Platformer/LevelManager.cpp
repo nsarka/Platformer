@@ -235,7 +235,9 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 			player.Load("Assets/Player/p1_spritesheet.png", "playertexture", spawnPoint.x, spawnPoint.y, pRenderer, world);
 		}
 
+		//setsky makes the sky the right color when debugdraw is used
 		player.SetSky(skyColorR, skyColorG, skyColorB, skyColorA);
+		SDL_SetRenderDrawColor(pRenderer, skyColorR, skyColorG, skyColorB, skyColorA);
 
 		//Player is made, set up the contact listener
 		TheContactListener = new ContactListener(player.numFootContacts);
