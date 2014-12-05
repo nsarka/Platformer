@@ -79,6 +79,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="EditorSystem.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Level Editor.cpp" />
@@ -86,6 +87,7 @@
     <ClCompile Include="Toolbar.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="EditorSystem.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="resource1.h" />

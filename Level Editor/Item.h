@@ -4,6 +4,7 @@
 class Item
 {
 public:
+	//Size and location on the toolbar
 	Item(int xpos, int ypos, int width, int height);
 	~Item();
 

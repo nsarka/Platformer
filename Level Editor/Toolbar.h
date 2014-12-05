@@ -7,7 +7,7 @@
 class Toolbar
 {
 public:
-	Toolbar(int xpos, int ypos, int width, int height);
+	Toolbar(int xpos, int ypos, int width, int height, int r, int g, int b, int a);
 	~Toolbar();
 
 	void AddItem();
@@ -16,4 +16,5 @@ public:
 private:
 	SDL_Rect bounds;
 	std::vector<Item*> itemList;
+	SDL_Color barColor;
 };
