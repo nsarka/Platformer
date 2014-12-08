@@ -79,6 +79,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\Platformer\Textures.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="EditorSystem.cpp" />
     <ClCompile Include="Item.cpp" />
@@ -87,6 +88,7 @@
     <ClCompile Include="Toolbar.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Platformer\Textures.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="EditorSystem.h" />
     <ClInclude Include="Item.h" />
