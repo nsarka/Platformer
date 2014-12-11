@@ -5,6 +5,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "SceneManager.h"
 
 
 class EditorSystem
@@ -28,6 +29,8 @@ public:
 private:
 	SDL_Window* pWindow;
 	SDL_Renderer* pRenderer;
+
+	SceneManager sceneManager;
 
 	FPSmanager fpsManager;
 

@@ -89,6 +89,23 @@ void EditorSystem::HandleEvents()
 				std::string levelstring = "Assets/" + levelname + ".xml";
 
 				//do something with levelstring
+				sceneManager.LoadScene(levelstring.c_str());
+			}
+
+			if (Event.key.keysym.sym == SDLK_F3)
+			{
+				//Change level
+				std::cout << "Enter level name (i.e. level02)" << std::endl;
+
+				std::string levelname;
+				std::cin >> levelname;
+
+				std::cout << "Loading " << levelname << ".xml" << std::endl;
+
+				std::string levelstring = "Assets/" + levelname + ".xml";
+
+				//do something with levelstring
+				sceneManager.SaveScene(levelstring.c_str());
 			}
 			break;
 
@@ -150,6 +167,7 @@ void EditorSystem::UpdateDebugText()
 	{
 		//String would get big really fast if we didnt reset it
 		DebugString = "Level: ";
+		DebugString.append(sceneManager.getLevelName());
 
 		DebugString.append("\nGame FPS: ");
 		DebugString.append(std::to_string(SDL_getFramerate(&fpsManager)));

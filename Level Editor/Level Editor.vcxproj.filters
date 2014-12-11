@@ -13,6 +13,9 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="XML Data">
+      <UniqueIdentifier>{16f011b0-e011-43e1-9816-dce8ca2a02a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Level Editor.cpp">
@@ -33,7 +36,10 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\Platformer\Textures.cpp">
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -56,7 +62,10 @@
     <ClInclude Include="Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\Platformer\Textures.h">
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -69,5 +78,25 @@
     <ResourceCompile Include="Level Editor.rc">
       <Filter>Resource Files</Filter>
     </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\Platformer\Assets\enemies_spritesheet.xml">
+      <Filter>XML Data</Filter>
+    </Xml>
+    <Xml Include="..\Platformer\Assets\hud_spritesheet.xml">
+      <Filter>XML Data</Filter>
+    </Xml>
+    <Xml Include="..\Platformer\Assets\p1_spritesheet.xml">
+      <Filter>XML Data</Filter>
+    </Xml>
+    <Xml Include="..\Platformer\Assets\p2_spritesheet.xml">
+      <Filter>XML Data</Filter>
+    </Xml>
+    <Xml Include="..\Platformer\Assets\p3_spritesheet.xml">
+      <Filter>XML Data</Filter>
+    </Xml>
+    <Xml Include="..\Platformer\Assets\tileset_spritesheet.xml">
+      <Filter>XML Data</Filter>
+    </Xml>
   </ItemGroup>
 </Project>

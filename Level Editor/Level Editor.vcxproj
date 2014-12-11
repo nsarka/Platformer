@@ -79,21 +79,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="..\Platformer\Textures.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="EditorSystem.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Level Editor.cpp" />
     <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="SpriteManager.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="Toolbar.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\Platformer\Textures.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="EditorSystem.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="resource1.h" />
     <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="SpriteManager.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="Toolbar.h" />
   </ItemGroup>
   <ItemGroup>
@@ -101,6 +103,18 @@
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Level Editor.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\Platformer\Assets\enemies_spritesheet.xml" />
+    <Xml Include="..\Platformer\Assets\hud_spritesheet.xml" />
+    <Xml Include="..\Platformer\Assets\p1_spritesheet.xml">
+      <SubType>Designer</SubType>
+    </Xml>
+    <Xml Include="..\Platformer\Assets\p2_spritesheet.xml" />
+    <Xml Include="..\Platformer\Assets\p3_spritesheet.xml" />
+    <Xml Include="..\Platformer\Assets\tileset_spritesheet.xml">
+      <SubType>Designer</SubType>
+    </Xml>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
