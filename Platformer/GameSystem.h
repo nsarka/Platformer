@@ -35,7 +35,7 @@ private:
 	FPSmanager fpsManager;
 
 	bool bRunning = false;
-	bool bDebugInfo = true;
+	bool bDebugInfo = false;
 
 	TTF_Font* GameOverFont;
 	SDL_Color TextColor;

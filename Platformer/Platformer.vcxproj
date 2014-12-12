@@ -90,6 +90,7 @@
     <ClCompile Include="LevelManager.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="GameSystem.cpp" />
+    <ClCompile Include="Mainmenu.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="Textures.cpp" />
@@ -100,6 +101,7 @@
     <ClInclude Include="GameSystem.h" />
     <ClInclude Include="GameTile.h" />
     <ClInclude Include="LevelManager.h" />
+    <ClInclude Include="Mainmenu.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="SpriteSheet.h" />
