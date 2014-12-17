@@ -5,6 +5,7 @@
 #include "LevelManager.h"
 #include "Player.h"
 #include "SDL_framerate.h"
+#include "Mainmenu.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -33,6 +34,8 @@ private:
 	SDL_Renderer* pRenderer;
 
 	FPSmanager fpsManager;
+
+	Mainmenu menu;
 
 	bool bRunning = false;
 	bool bDebugInfo = false;

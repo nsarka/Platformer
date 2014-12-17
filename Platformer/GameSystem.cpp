@@ -43,9 +43,13 @@ GameSystem::GameSystem()
 	//Keep game loop running
 	bRunning = true;
 
+	//Load menu splash
+	menu.LoadSplash(pRenderer);
+	menu.isInMenu = true;
+
 	//Initialize the level; Each level owns and loads all LevelObjects and GameObjects, GameSystem class only owns a vector list of the two
 	levelManager.LoadLevelSheet("Assets/tileset_spritesheet.xml");
-	levelManager.LoadLevelData("Assets/Tiles/tiles_spritesheet.png", "Assets/level03.xml", pRenderer, false);
+	levelManager.LoadLevelData("Assets/Tiles/tiles_spritesheet.png", "Assets/level01.xml", pRenderer, false);
 
 	SDL_SetRenderDrawColor(pRenderer, (Uint8)levelManager.skyColorR, (Uint8)levelManager.skyColorG, (Uint8)levelManager.skyColorB, (Uint8)levelManager.skyColorA);
 }
@@ -96,7 +100,12 @@ void GameSystem::HandleEvents()
 				levelManager.LoadLevelSheet("Assets/tileset_spritesheet.xml");
 				levelManager.LoadLevelData("Assets/Tiles/tiles_spritesheet.png", levelstring.c_str(), pRenderer, true);
 			}
-			break;
+		case SDL_MOUSEBUTTONDOWN:
+			if (menu.isInMenu)
+			{
+				menu.isInMenu = false;
+			}
+		break;
 
 		default:
 			break;
@@ -109,17 +118,24 @@ void GameSystem::Render()
 	//Clear the screen
 	SDL_RenderClear(pRenderer);
 
-	//Render all tiles by looping through all the levels tiles and drawing
-	for (std::vector<GameTile*>::size_type i = 0; i != levelManager.levelTiles.size(); i++)
+	if (!menu.isInMenu)
 	{
-		levelManager.levelTiles[i]->Draw(pRenderer, bDebugInfo);
+		//Render all tiles by looping through all the levels tiles and drawing
+		for (std::vector<GameTile*>::size_type i = 0; i != levelManager.levelTiles.size(); i++)
+		{
+			levelManager.levelTiles[i]->Draw(pRenderer, bDebugInfo);
+		}
+
+		//Render Player
+		levelManager.player.Draw(pRenderer, bDebugInfo);
+
+		//Render debug text
+		if (bDebugInfo) { DrawText(DebugString); }
 	}
-
-	//Render Player
-	levelManager.player.Draw(pRenderer, bDebugInfo);
-
-	//Render debug text
-	if (bDebugInfo) { DrawText(DebugString); }
+	else
+	{
+		menu.Draw(pRenderer);
+	}
 
 	//Draw the buffer to screen
 	SDL_RenderPresent(pRenderer);
@@ -127,20 +143,23 @@ void GameSystem::Render()
 
 void GameSystem::Update()
 {
-	//Update debug text's player coords, fps, level name, etc.
-	UpdateDebugText();
-
-	//Update the physics world
-	levelManager.world->Step(levelManager.timeStep, levelManager.velocityIterations, levelManager.positionIterations);
-
-	//Update all tiles by looping through them
-	for (std::vector<GameTile*>::size_type i = 0; i != levelManager.levelTiles.size(); i++)
+	if (!menu.isInMenu)
 	{
-		levelManager.levelTiles[i]->Update();
-	}
+		//Update debug text's player coords, fps, level name, etc.
+		UpdateDebugText();
 
-	//Get player input, move player, etc.
-	levelManager.player.Update();
+		//Update the physics world
+		levelManager.world->Step(levelManager.timeStep, levelManager.velocityIterations, levelManager.positionIterations);
+
+		//Update all tiles by looping through them
+		for (std::vector<GameTile*>::size_type i = 0; i != levelManager.levelTiles.size(); i++)
+		{
+			levelManager.levelTiles[i]->Update();
+		}
+
+		//Get player input, move player, etc.
+		levelManager.player.Update();
+	}
 }
 
 void GameSystem::DrawText(std::string TextString)

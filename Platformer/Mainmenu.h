@@ -4,11 +4,12 @@
 class Mainmenu
 {
 public:
-	Mainmenu();
-	~Mainmenu();
+	Mainmenu() {};
+	~Mainmenu() {};
 
-	void Draw();
-	int Click();
+	void LoadSplash(SDL_Renderer* pRenderer);
+	void Draw(SDL_Renderer* pRenderer);
+	bool isInMenu = false;
 
 private:
 
