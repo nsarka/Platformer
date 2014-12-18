@@ -35,7 +35,7 @@ private:
 
 	FPSmanager fpsManager;
 
-	Mainmenu menu;
+	Mainmenu Menu;
 
 	bool bRunning = false;
 	bool bDebugInfo = false;

@@ -43,9 +43,9 @@ GameSystem::GameSystem()
 	//Keep game loop running
 	bRunning = true;
 
-	//Load menu splash
-	menu.LoadSplash(pRenderer);
-	menu.isInMenu = true;
+	//Load splash and main menu
+	Menu.LoadSplash(pRenderer);
+	Menu.isInMenu = true;
 
 	//Initialize the level; Each level owns and loads all LevelObjects and GameObjects, GameSystem class only owns a vector list of the two
 	levelManager.LoadLevelSheet("Assets/tileset_spritesheet.xml");
@@ -101,9 +101,9 @@ void GameSystem::HandleEvents()
 				levelManager.LoadLevelData("Assets/Tiles/tiles_spritesheet.png", levelstring.c_str(), pRenderer, true);
 			}
 		case SDL_MOUSEBUTTONDOWN:
-			if (menu.isInMenu)
+			if (Menu.isInMenu)
 			{
-				menu.isInMenu = false;
+				Menu.isInMenu = false;
 			}
 		break;
 
@@ -118,7 +118,7 @@ void GameSystem::Render()
 	//Clear the screen
 	SDL_RenderClear(pRenderer);
 
-	if (!menu.isInMenu)
+	if (!Menu.isInMenu)
 	{
 		//Render all tiles by looping through all the levels tiles and drawing
 		for (std::vector<GameTile*>::size_type i = 0; i != levelManager.levelTiles.size(); i++)
@@ -134,7 +134,7 @@ void GameSystem::Render()
 	}
 	else
 	{
-		menu.Draw(pRenderer);
+		Menu.Draw(pRenderer);
 	}
 
 	//Draw the buffer to screen
@@ -143,7 +143,7 @@ void GameSystem::Render()
 
 void GameSystem::Update()
 {
-	if (!menu.isInMenu)
+	if (!Menu.isInMenu)
 	{
 		//Update debug text's player coords, fps, level name, etc.
 		UpdateDebugText();
