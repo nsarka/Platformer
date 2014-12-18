@@ -8,12 +8,7 @@ Toolbar::Toolbar(int xpos, int ypos, int width, int height)
 	bounds.h = height;
 }
 
-void Toolbar::AddItem()
-{
-
-}
-
-void Toolbar::RemoveItem()
+void Toolbar::Populate()
 {
 
 }

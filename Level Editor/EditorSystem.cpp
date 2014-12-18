@@ -75,26 +75,26 @@ void EditorSystem::HandleEvents()
 			{
 				ToggleDebugInfo();
 			}
-
+			
+			//Save level
 			if (Event.key.keysym.sym == SDLK_F2)
 			{
-				//Change level
 				std::cout << "Enter level name (i.e. level02)" << std::endl;
 
 				std::string levelname;
 				std::cin >> levelname;
 
-				std::cout << "Loading " << levelname << ".xml" << std::endl;
+				std::cout << "Saving " << levelname << ".xml" << std::endl;
 
 				std::string levelstring = "Assets/" + levelname + ".xml";
 
-				//do something with levelstring
-				sceneManager.LoadScene(levelstring.c_str());
+				//save scene with levelstring
+				sceneManager.SaveScene(levelstring.c_str());
 			}
 
+			//Load level
 			if (Event.key.keysym.sym == SDLK_F3)
 			{
-				//Change level
 				std::cout << "Enter level name (i.e. level02)" << std::endl;
 
 				std::string levelname;
@@ -104,8 +104,8 @@ void EditorSystem::HandleEvents()
 
 				std::string levelstring = "Assets/" + levelname + ".xml";
 
-				//do something with levelstring
-				sceneManager.SaveScene(levelstring.c_str());
+				//load scene with levelstring
+				sceneManager.LoadScene(levelstring.c_str());
 			}
 			break;
 

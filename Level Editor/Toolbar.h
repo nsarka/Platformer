@@ -11,9 +11,7 @@ public:
 	Toolbar(int xpos, int ypos, int width, int height);
 	~Toolbar();
 
-	void AddItem();
-	void RemoveItem();
-
+	void Populate();
 	void Draw();
 
 private:
