@@ -23,10 +23,10 @@ Player::Player()
 
 void Player::SetSky(int skyr, int skyg, int skyb, int skya)
 {
-	skyColorR = skyr;
-	skyColorG = skyg;
-	skyColorB = skyb;
-	skyColorA = skya;
+	skyColor.r = skyr;
+	skyColor.g = skyg;
+	skyColor.b = skyb;
+	skyColor.a = skya;
 }
 
 void Player::Load(std::string path, std::string texture, int x, int y, SDL_Renderer* pRenderer, b2World* world)
@@ -110,7 +110,7 @@ void Player::drawBody(SDL_Renderer* renderer)
 		}
 	}
 
-	SDL_SetRenderDrawColor(renderer, skyColorR, skyColorG, skyColorB, skyColorA);
+	SDL_SetRenderDrawColor(renderer, skyColor.r, skyColor.g, skyColor.b, skyColor.a);
 }
 
 void Player::Update()
@@ -219,9 +219,9 @@ void Player::HandleInput()
 		playerFlip = true;
 		objFrame = playerSheet->GetFrame(walkFrames[int(((SDL_GetTicks() / 25) % 11))]);
 
-		if (playerBody->GetLinearVelocity().x > -5.0)
+		if (playerBody->GetLinearVelocity().x > (playerSprint ? -7.0 : -5.0))
 		{
-			playerBody->ApplyLinearImpulse(b2Vec2(-2, 0), b2Vec2(0, 0), true);
+			playerBody->ApplyLinearImpulse(b2Vec2(playerSprint ? -3 : -2, 0), b2Vec2(0, 0), true);
 		}
 	}
 
@@ -230,13 +230,13 @@ void Player::HandleInput()
 		playerFlip = false;
 		objFrame = playerSheet->GetFrame(walkFrames[int(((SDL_GetTicks() / 25) % 11))]);
 
-		if (playerBody->GetLinearVelocity().x < 5.0)
+		if (playerBody->GetLinearVelocity().x < (playerSprint ? 7.0 : 5.0))
 		{
-			playerBody->ApplyLinearImpulse(b2Vec2(2, 0), b2Vec2(0, 0), true);
+			playerBody->ApplyLinearImpulse(b2Vec2(playerSprint ? 3 : 2, 0), b2Vec2(0, 0), true);
 		}
 	}
 
-	if (state[SDL_SCANCODE_F3])
+	if (state[SDL_SCANCODE_F5])
 	{
 		//Toggles need a second to cool down
 		if (SDL_GetTicks() >= playerNextToggle)
@@ -246,30 +246,14 @@ void Player::HandleInput()
 		}
 	}
 
-	if (state[SDL_SCANCODE_F4])
+	if (state[SDL_SCANCODE_LSHIFT])
 	{
-		//Toggles need a second to cool down
-		if (SDL_GetTicks() >= playerNextToggle)
-		{
-			ToggleNoclip();
-			playerNextToggle += SDL_GetTicks() + 1000.0f;
-		}
+		//Toggle sprint
+		playerSprint = true;
 	}
-}
-
-void Player::ToggleNoclip()
-{
-	if (!playerNoclip)
+	else if (!state[SDL_SCANCODE_LSHIFT])
 	{
-		std::cout << "Noclip ON" << std::endl;
-		playerNoclip = true;
-		playerBody->SetType(b2_kinematicBody);
-	}
-	else
-	{
-		std::cout << "Noclip OFF" << std::endl;
-		playerNoclip = false;
-		playerBody->SetType(b2_dynamicBody);
+		playerSprint = false;
 	}
 }
 

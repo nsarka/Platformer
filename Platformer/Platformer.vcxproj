@@ -94,6 +94,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="Textures.cpp" />
+    <ClCompile Include="Toolbar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Camera.h" />
@@ -106,6 +107,7 @@
     <ClInclude Include="resource.h" />
     <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="Textures.h" />
+    <ClInclude Include="Toolbar.h" />
     <ClInclude Include="Util.h" />
   </ItemGroup>
   <ItemGroup>

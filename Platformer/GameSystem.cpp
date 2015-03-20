@@ -51,7 +51,10 @@ GameSystem::GameSystem()
 	levelManager.LoadLevelSheet("Assets/tileset_spritesheet.xml");
 	levelManager.LoadLevelData("Assets/Tiles/tiles_spritesheet.png", "Assets/level01.xml", pRenderer, false);
 
-	SDL_SetRenderDrawColor(pRenderer, (Uint8)levelManager.skyColorR, (Uint8)levelManager.skyColorG, (Uint8)levelManager.skyColorB, (Uint8)levelManager.skyColorA);
+	//Initialize the toolbar for sandbox mode
+	pEditorBar = new Toolbar(levelManager.GetLevelSheet());
+
+	SDL_SetRenderDrawColor(pRenderer, levelManager.colors.r, levelManager.colors.g, levelManager.colors.b, levelManager.colors.a);
 }
 
 //System destructor, clean up SDL
@@ -87,7 +90,7 @@ void GameSystem::HandleEvents()
 			if (Event.key.keysym.sym == SDLK_F2)
 			{
 				//This pauses the game
-				std::cout << "Enter level name (i.e. level02)" << std::endl;
+				std::cout << "Load level name (i.e. level02)" << std::endl;
 
 				std::string levelname;
 				std::cin >> levelname;
@@ -100,6 +103,27 @@ void GameSystem::HandleEvents()
 				levelManager.LoadLevelSheet("Assets/tileset_spritesheet.xml");
 				levelManager.LoadLevelData("Assets/Tiles/tiles_spritesheet.png", levelstring.c_str(), pRenderer, true);
 			}
+
+			if (Event.key.keysym.sym == SDLK_F3)
+			{
+				//This pauses the game
+				std::cout << "Save level name (i.e. level02)" << std::endl;
+
+				std::string levelname;
+				std::cin >> levelname;
+
+				std::cout << "Saving " << levelname << ".xml" << std::endl;
+
+				std::string levelstring = "Assets/" + levelname + ".xml";
+
+				levelManager.SaveLevel(levelstring) ? std::cout << "Saved." << std::endl : std::cout << "Not Saved." << std::endl;
+			}
+
+			if (Event.key.keysym.sym == SDLK_F4)
+			{
+				ToggleSandboxMode();
+			}
+
 		case SDL_MOUSEBUTTONDOWN:
 			if (Menu.isInMenu)
 			{
@@ -196,6 +220,9 @@ void GameSystem::UpdateDebugText()
 		DebugString = "Level: ";
 		DebugString.append(levelManager.GetLevelName());
 
+		DebugString.append("\nSandbox Mode: ");
+		DebugString.append(std::to_string(bSandboxMode));
+
 		DebugString.append("\nGame FPS: ");
 		DebugString.append(std::to_string(SDL_getFramerate(&fpsManager)));
 
@@ -207,6 +234,9 @@ void GameSystem::UpdateDebugText()
 
 		DebugString.append("\nFoot Sensor: ");
 		DebugString.append(std::to_string(levelManager.player.numFootContacts));
+
+		DebugString.append("\nSprinting: ");
+		DebugString.append(std::to_string(levelManager.player.GetPlayerSprint()));
 
 		DebugString.append("\nVelocity: ");
 		DebugString.append(std::to_string(levelManager.player.GetPlayerVelocity().x));

@@ -22,8 +22,13 @@ public:
 	void LoadLevelData(const char* ImagePath, const char* XMLPath, SDL_Renderer* pRenderer, bool playerExists);
 	void LoadLevelSheet(const char* XMLPath);
 
+	//Save level data
+	bool SaveLevel(std::string name);
+
+
 	//Get info
 	std::string GetLevelName() { return levelName; }
+	SpriteSheet* GetLevelSheet() { return levelSheet; }
 
 	//Clean the level to load another
 	void CleanLevel();
@@ -42,12 +47,8 @@ public:
 	int32 positionIterations = 2;
 	float sc = 16.0;
 
-	/*Sky color - id use SDL_Color but sdl color uses Uint8 instead of int
-	i thought of type casting afterwards but im too lazy to change it. ill do it later haha */
-	int skyColorR = 0;
-	int skyColorG = 0;
-	int skyColorB = 0;
-	int skyColorA = 0;
+	//Sky color
+	SDL_Color colors;
 
 private:
 	//Level name parsed in levelDoc

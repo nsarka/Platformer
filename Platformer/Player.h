@@ -30,15 +30,14 @@ public:
 	int GetScreenPosX() { return playerScreenPos.x; }
 	int GetScreenPosY() { return playerScreenPos.y; }
 
+	int GetPlayerSprint() { return playerSprint; }
+
 	b2Vec2 GetPlayerVelocity() { return playerBody->GetLinearVelocity(); }
 
 	int numFootContacts = 0;
 
 	//Sky color for debug draw function
-	int skyColorR = 0;
-	int skyColorG = 0;
-	int skyColorB = 0;
-	int skyColorA = 0;
+	SDL_Color skyColor;
 
 private:
 	SpriteSheet* playerSheet = 0;
@@ -74,6 +73,9 @@ private:
 
 	//Player duck
 	bool playerDuck = false;
+
+	//Player sprint
+	bool playerSprint = false;
 
 	//Array so Player::Update() knows which frames are the ones for walking
 	std::array<std::string, 11> walkFrames

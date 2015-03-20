@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "SDL_framerate.h"
 #include "Mainmenu.h"
+#include "Toolbar.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -28,6 +29,7 @@ public:
 	void UpdateDebugText();
 	void DrawText(std::string TextString);
 	void ToggleDebugInfo() { bDebugInfo = !bDebugInfo; }
+	void ToggleSandboxMode() { bSandboxMode = !bSandboxMode; }
 
 private:
 	SDL_Window* pWindow;
@@ -36,9 +38,11 @@ private:
 	FPSmanager fpsManager;
 
 	Mainmenu Menu;
+	Toolbar* pEditorBar;
 
 	bool bRunning = false;
 	bool bDebugInfo = false;
+	bool bSandboxMode = false;
 
 	TTF_Font* GameOverFont;
 	SDL_Color TextColor;

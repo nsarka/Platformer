@@ -59,10 +59,10 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 		levelElement->QueryIntAttribute("levelendh", &levelEndBoundaries.h);
 
 		//Query sky color
-		levelElement->QueryIntAttribute("skyr", &skyColorR);
-		levelElement->QueryIntAttribute("skyg", &skyColorG);
-		levelElement->QueryIntAttribute("skyb", &skyColorB);
-		levelElement->QueryIntAttribute("skya", &skyColorA);
+		levelElement->QueryIntAttribute("skyr", (int*)&colors.r);
+		levelElement->QueryIntAttribute("skyg", (int*)&colors.g);
+		levelElement->QueryIntAttribute("skyb", (int*)&colors.b);
+		levelElement->QueryIntAttribute("skya", (int*)&colors.a);
 
 		//Cycle through all elements in the spritesheet
 		for (tinyxml2::XMLElement* child = levelElement->FirstChildElement(); child != NULL; child = child->NextSiblingElement())
@@ -70,7 +70,7 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 			if (std::string(child->Name()) == "tile")
 			{
 				//Create a new tile to add to our master tile list
-				GameTile* tile = new GameTile(skyColorR, skyColorG, skyColorB, skyColorA);
+				GameTile* tile = new GameTile(colors.r, colors.g, colors.b, colors.a);
 				SDL_Point point;
 				std::string tileName;
 				int physics;
@@ -134,7 +134,7 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 				if (std::string(child->Name()) == "tile")
 				{
 					//Create a new tile to add to our master tile list
-					GameTile* tile = new GameTile(skyColorR, skyColorG, skyColorB, skyColorA);
+					GameTile* tile = new GameTile((Uint8)colors.r, (Uint8)colors.g, (Uint8)colors.b, (Uint8)colors.a);
 					SDL_Point point;
 					std::string tileName;
 					int physics;
@@ -171,7 +171,7 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 					if (std::string(child->Name()) == "tile")
 					{
 						//Create a new tile to add to our master tile list
-						GameTile* tileB = new GameTile(skyColorR, skyColorG, skyColorB, skyColorA);
+						GameTile* tileB = new GameTile((Uint8)colors.r, (Uint8)colors.g, (Uint8)colors.b, (Uint8)colors.a);
 
 						int physicsB;
 
@@ -211,8 +211,8 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 						revoluteJointDef.localAnchorA.Set(laax, laay);
 						revoluteJointDef.localAnchorB.Set(labx, laby);
 						revoluteJointDef.enableMotor = enable_motor;
-						revoluteJointDef.maxMotorTorque = motor_torque;
-						revoluteJointDef.motorSpeed = motor_speed * DEGTORAD;//degrees per second
+						revoluteJointDef.maxMotorTorque = (float32)motor_torque;
+						revoluteJointDef.motorSpeed = (float32)motor_speed * DEGTORAD;//degrees per second
 
 						joint = (b2RevoluteJoint*)world->CreateJoint(&revoluteJointDef);
 						levelJoints.push_back(joint);
@@ -236,22 +236,52 @@ void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL
 		}
 
 		//setsky makes the sky the right color when debugdraw is used
-		player.SetSky(skyColorR, skyColorG, skyColorB, skyColorA);
-		SDL_SetRenderDrawColor(pRenderer, skyColorR, skyColorG, skyColorB, skyColorA);
+		player.SetSky((Uint8)colors.r, (Uint8)colors.g, (Uint8)colors.b, (Uint8)colors.a);
+		SDL_SetRenderDrawColor(pRenderer, (Uint8)colors.r, (Uint8)colors.g, (Uint8)colors.b, (Uint8)colors.a);
 
 		//Player is made, set up the contact listener
 		TheContactListener = new ContactListener(player.numFootContacts);
 		world->SetContactListener(TheContactListener);
 
 		//Set the cameras position by dividing by the scale and focusing
-		spawnPoint.x = spawnPoint.x / sc;
-		spawnPoint.y = spawnPoint.y / sc;
+		spawnPoint.x = spawnPoint.x / (int)sc;
+		spawnPoint.y = spawnPoint.y / (int)sc;
 		Camera::Instance()->SetFocus(spawnPoint);
 	}
 	else
 	{
 		std::cout << "XML sheet could not be found: " << std::string(XMLPath) << std::endl;
 	}
+}
+
+bool LevelManager::SaveLevel(std::string name)
+{
+	//Create document
+	XMLDocument xmlDoc;
+
+	//Set up the root node
+	XMLNode* pRoot = xmlDoc.NewElement("leveldata");
+	xmlDoc.InsertFirstChild(pRoot);
+
+	//Cycle through tiles and write xml
+	for (std::vector<GameTile*>::size_type i = 0; i != levelTiles.size(); i++)
+	{
+		if (i != NULL)
+		{
+			XMLElement* pElement = xmlDoc.NewElement("tile");
+			pElement->SetAttribute("name", levelTiles[i]->GetTileName().c_str());
+			pElement->SetAttribute("posX", levelTiles[i]->GetPoint().x);
+			pElement->SetAttribute("posY", levelTiles[i]->GetPoint().y);
+			pElement->SetAttribute("physics", levelTiles[i]->GetPhysics());
+			pElement->SetAttribute("sound", levelTiles[i]->GetSound());
+			pElement->SetAttribute("action", false);
+			pRoot->InsertEndChild(pElement);
+		}
+	}
+
+	//Save document
+	xmlDoc.SaveFile(name.c_str());
+	return true;
 }
 
 void LevelManager::CleanLevel()

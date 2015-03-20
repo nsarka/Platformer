@@ -5,10 +5,10 @@
 
 GameTile::GameTile(int skyr, int skyg, int skyb, int skya)
 {
-	skyColorR = skyr;
-	skyColorG = skyg;
-	skyColorB = skyb;
-	skyColorA = skya;
+	skyColor.r = skyr;
+	skyColor.g = skyg;
+	skyColor.b = skyb;
+	skyColor.a = skya;
 }
 
 /* Thank you Erin Catto */
@@ -34,15 +34,15 @@ void GameTile::drawBody(SDL_Renderer* renderer)
 				b2Vec2 p1 = tileBody->GetWorldPoint(poly->GetVertex(i));
 
 				SDL_RenderDrawLine(renderer,
-					sc * p0.x - ox, -sc * p0.y - oy,
-					sc * p1.x - ox, -sc * p1.y - oy
+					(int)sc * p0.x - (float32)ox, -(int)sc * p0.y - (float32)oy,
+					(int)sc * p1.x - (float32)ox, -(int)sc * p1.y - (float32)oy
 					);
 			}
 			//verts now contains world co-ords of all the verts
 		}
 	}
 
-	SDL_SetRenderDrawColor(renderer, skyColorR, skyColorG, skyColorB, skyColorA);
+	SDL_SetRenderDrawColor(renderer, skyColor.r, skyColor.g, skyColor.b, skyColor.a);
 }
 
 void GameTile::Draw(SDL_Renderer* pRenderer, bool tileDebug)
@@ -76,8 +76,8 @@ void GameTile::Update()
 	{
 		b2Vec2 pos = tileBody->GetPosition();
 
-		point.x = (pos.x*sc)-(frame.w/2);
-		point.y = (-pos.y*sc)-(frame.h/2);
+		point.x = (int)(pos.x*(int)sc) - (frame.w / 2);
+		point.y = (int)(-pos.y*(int)sc) - (frame.h / 2);
 	}
 }
 
@@ -96,6 +96,7 @@ bool GameTile::IsTileInScreen(int x, int y, int w, int h)
 		return false;
 	}
 
+	//Screen res is hard coded
 	if (x >= 1024)
 	{
 		return false;
@@ -119,9 +120,9 @@ void GameTile::SetImageName(std::string TextureName)
 	ImageName = TextureName;
 }
 
-void GameTile::SetTileName(std::string TileName)
+void GameTile::SetTileName(std::string tileName)
 {
-	TileName = TileName;
+	TileName = tileName;
 }
 
 void GameTile::SetPoint(SDL_Point Point)

@@ -27,6 +27,8 @@ public:
 	//Get tile properties
 	int GetPhysics() { return physics; }
 	int GetSound() { return sound; }
+	SDL_Point GetPoint() { return point; }
+	b2Body* GetBody() { return tileBody; }
 	std::string GetImageName() { return ImageName; }
 	std::string GetTileName() { return TileName; }
 
@@ -34,10 +36,7 @@ public:
 	bool IsTileInScreen(int x, int y, int w, int h);
 
 	//Sky color for debug draw function
-	int skyColorR = 0;
-	int skyColorG = 0;
-	int skyColorB = 0;
-	int skyColorA = 0;
+	SDL_Color skyColor;
 
 	//Clean
 	void Delete();
