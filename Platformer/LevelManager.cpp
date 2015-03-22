@@ -259,9 +259,28 @@ bool LevelManager::SaveLevel(std::string name)
 	//Create document
 	XMLDocument xmlDoc;
 
+	//Set up an element to set attributes
+	XMLElement* pRootElement = xmlDoc.NewElement("leveldata");
+	pRootElement->SetAttribute("name", "testlevelname");
+	pRootElement->SetAttribute("spawnx", 370);
+	pRootElement->SetAttribute("spawny", 395);
+	pRootElement->SetAttribute("mapx", 0);
+	pRootElement->SetAttribute("mapy", 0);
+	pRootElement->SetAttribute("mapw", 1500);
+	pRootElement->SetAttribute("maph", 2000);
+	pRootElement->SetAttribute("levelendx", 1024);
+	pRootElement->SetAttribute("levelendy", 0);
+	pRootElement->SetAttribute("levelendw", 1024);
+	pRootElement->SetAttribute("levelendh", 768);
+	pRootElement->SetAttribute("skyr", 255);
+	pRootElement->SetAttribute("skyg", 255);
+	pRootElement->SetAttribute("skyb", 255);
+	pRootElement->SetAttribute("skya", 255);
+
 	//Set up the root node
-	XMLNode* pRoot = xmlDoc.NewElement("leveldata");
+	XMLNode* pRoot = pRootElement;
 	xmlDoc.InsertFirstChild(pRoot);
+	
 
 	//Cycle through tiles and write xml
 	for (std::vector<GameTile*>::size_type i = 0; i != levelTiles.size(); i++)

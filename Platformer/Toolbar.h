@@ -1,3 +1,8 @@
+/*
+	Work in progress. Will finish levelmanager.save first
+	so editing the level with toolbar has a purpose
+*/
+
 #pragma once
 #include "SpriteSheet.h"
 #include "Textures.h"

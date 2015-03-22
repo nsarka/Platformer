@@ -5,15 +5,16 @@
 
 using namespace tinyxml2;
 
-
 class SpriteSheet
 {
 public:
 	SpriteSheet(const char* Path);
 	~SpriteSheet();
 
+	//Read spritesheet data
 	SDL_Rect GetFrame(std::string FrameName);
 
+	//Print all sheet data in console
 	void PrintSheet();
 
 private:

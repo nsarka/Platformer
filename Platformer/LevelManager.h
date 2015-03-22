@@ -25,7 +25,6 @@ public:
 	//Save level data
 	bool SaveLevel(std::string name);
 
-
 	//Get info
 	std::string GetLevelName() { return levelName; }
 	SpriteSheet* GetLevelSheet() { return levelSheet; }

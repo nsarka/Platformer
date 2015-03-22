@@ -1,6 +1,9 @@
+/*
+	Thanks Erin Catto
+*/
+
 #include "Box2d.h"
 #include "Util.h"
-
 
 class ContactListener : public b2ContactListener
 {

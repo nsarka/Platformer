@@ -33,9 +33,10 @@ void GameTile::drawBody(SDL_Renderer* renderer)
 				b2Vec2 p0 = tileBody->GetWorldPoint(poly->GetVertex(ind0));
 				b2Vec2 p1 = tileBody->GetWorldPoint(poly->GetVertex(i));
 
+				//Get rid of compiler warnings.. Hopefully this isnt bad practice
 				SDL_RenderDrawLine(renderer,
-					(int)sc * p0.x - (float32)ox, -(int)sc * p0.y - (float32)oy,
-					(int)sc * p1.x - (float32)ox, -(int)sc * p1.y - (float32)oy
+					(int)sc * (int)p0.x - (float32)ox, -(int)sc * (int)p0.y - (float32)oy,
+					(int)sc * (int)p1.x - (float32)ox, -(int)sc * (int)p1.y - (float32)oy
 					);
 			}
 			//verts now contains world co-ords of all the verts

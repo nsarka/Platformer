@@ -4,6 +4,7 @@
 class Camera
 {
 public:
+	//Use camera class as a singleton
 	static Camera* Instance()
 	{
 		if (!pInstance)

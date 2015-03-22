@@ -6,6 +6,7 @@
 class TextureManager
 {
 public:
+	//Use as singleton
 	static TextureManager* Instance()
 	{
 		if (!pInstance) { pInstance = new TextureManager(); }
