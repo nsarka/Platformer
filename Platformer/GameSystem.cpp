@@ -51,9 +51,7 @@ GameSystem::GameSystem()
 	levelManager.LoadLevelSheet("Assets/tileset_spritesheet.xml");
 	levelManager.LoadLevelData("Assets/Tiles/tiles_spritesheet.png", "Assets/level01.xml", pRenderer, false);
 
-	//Initialize the toolbar for sandbox mode
-	pEditorBar = new Toolbar(levelManager.GetLevelSheet());
-
+	//Set sky color
 	SDL_SetRenderDrawColor(pRenderer, levelManager.colors.r, levelManager.colors.g, levelManager.colors.b, levelManager.colors.a);
 }
 

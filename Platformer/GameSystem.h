@@ -6,7 +6,6 @@
 #include "Player.h"
 #include "SDL_framerate.h"
 #include "Mainmenu.h"
-#include "Toolbar.h"
 #include <iostream>
 #include <string>
 #include <vector>
@@ -37,8 +36,8 @@ private:
 
 	FPSmanager fpsManager;
 
+	//Very rudimentary as of now
 	Mainmenu Menu;
-	Toolbar* pEditorBar;
 
 	bool bRunning = false;
 	bool bDebugInfo = false;

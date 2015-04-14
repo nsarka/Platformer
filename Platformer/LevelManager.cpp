@@ -19,6 +19,7 @@ LevelManager::LevelManager()
 void LevelManager::LoadLevelSheet(const char* XMLPath)
 {
 	levelSheet = new SpriteSheet(XMLPath);
+	pEditorBar = new Toolbar(levelSheet);
 }
 
 void LevelManager::LoadLevelData(const char* ImagePath, const char* XMLPath, SDL_Renderer* pRenderer, bool playerExists)

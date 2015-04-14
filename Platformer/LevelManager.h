@@ -10,6 +10,7 @@
 #include <vector>
 #include "Box2d.h"
 #include "ContactListener.h"
+#include "Toolbar.h"
 
 
 class LevelManager
@@ -55,6 +56,9 @@ private:
 
 	//Level spritesheet
 	SpriteSheet* levelSheet = 0;
+
+	//Level Toolbar
+	Toolbar* pEditorBar = 0;
 
 	//Read XML and put data into containers in GameSystem for game to process
 	XMLDocument levelDoc;

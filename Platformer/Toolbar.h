@@ -18,5 +18,8 @@ public:
 
 private:
 	SDL_Rect editorBounds;
+
+	//Selection num is the index on the toolbar tile list
+	int selectedTileNum;
 };
 
