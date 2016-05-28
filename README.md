@@ -9,7 +9,7 @@ Rendering: https://www.libsdl.org/
 
 Physics: http://box2d.org/
 
-Level parsing: http://www.grinninglizard.com/tinyxml2/
+XML parsing: http://www.grinninglizard.com/tinyxml2/
 
 ![Boxes](/boxes.png?raw=true)
 ![Debug draw](/debugdraw.png?raw=true)
