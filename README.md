@@ -3,7 +3,7 @@ Platformer
 
 2D Platformer with SDL and Box2d by Magnolium
 
-Art + music courtesy: http://open.commonly.cc/
+Art + music courtesy: http://open.commonly.cc/ http://www.kenney.nl/
 
 Rendering: https://www.libsdl.org/
 
