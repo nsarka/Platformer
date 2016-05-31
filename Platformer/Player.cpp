@@ -128,9 +128,16 @@ void Player::Update()
 	playerScreenPos.y = playerWorldPos.y - Camera::Instance()->GetOffset().y;
 
 	//Make him look like hes falling if his y velocity is fast
-	if (playerBody->GetLinearVelocity().y > 3 || playerBody->GetLinearVelocity().y < -3)
+	if (!playerDuck)
 	{
-		objFrame = playerSheet->GetFrame("p1_jump");
+		if (playerBody->GetLinearVelocity().y > 3 || playerBody->GetLinearVelocity().y < -3)
+		{
+			objFrame = playerSheet->GetFrame("p1_jump");
+		}
+	}
+	else
+	{
+		//change size to make him duck
 	}
 
 	//Set the drift to lag behind the player
@@ -202,7 +209,7 @@ void Player::HandleInput()
 		playerDuck = true;
 		
 		objFrame = playerSheet->GetFrame("p1_duck");
-		playerBody->ApplyLinearImpulse(b2Vec2(0, -1), b2Vec2(0, 0), true);
+		playerBody->ApplyLinearImpulse(b2Vec2(0.0, -1.0), b2Vec2(0.0, 0.0), true);
 	}
 
 	if (state[SDL_SCANCODE_UP])
@@ -210,7 +217,7 @@ void Player::HandleInput()
 		if(numFootContacts > 0)
 		{
 			objFrame = playerSheet->GetFrame("p1_jump");
-			playerBody->ApplyLinearImpulse(b2Vec2(0, 10), b2Vec2(0, 0), true);
+			playerBody->ApplyLinearImpulse(b2Vec2(0, 15.0), b2Vec2(0, 0), true);
 		}
 	}
 

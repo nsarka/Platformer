@@ -35,8 +35,8 @@ void GameTile::drawBody(SDL_Renderer* renderer)
 
 				//Get rid of compiler warnings.. Hopefully this isnt bad practice
 				SDL_RenderDrawLine(renderer,
-					(int)sc * (int)p0.x - (float32)ox, -(int)sc * (int)p0.y - (float32)oy,
-					(int)sc * (int)p1.x - (float32)ox, -(int)sc * (int)p1.y - (float32)oy
+					sc * p0.x - ox, -sc * p0.y - oy,
+					sc * p1.x - ox, -sc * p1.y - oy
 					);
 			}
 			//verts now contains world co-ords of all the verts

@@ -23,10 +23,10 @@
        things in the front should be placed last here -->
 
   <!-- Revolute Joint -->
-<!--
+
   <joint_revolute localanchor_a_x="0.0" localanchor_a_y="0.0" localanchor_b_x="7.0" localanchor_b_y="0.0" collide_connected="false" enable_limit="false" upperlimit="45" lowerlimit="-45" enable_motor="true" motor_torque="20" motor_speed="90"/>
   <tile name="boxEmpty" posX="300" posY="100" physics="1" sound="1" action="false" />
-  <tile name="boxEmpty" posX="505" posY="340" physics="2" sound="1" action="false" /> -->
+  <tile name="boxEmpty" posX="505" posY="340" physics="2" sound="1" action="false" />
   
   <!-- Ground -->
   <tile name="grassMid" posX="70" posY="488" physics="1" sound="1" action="false" />
@@ -106,12 +106,12 @@
   <tile name="grassMid" posX="1050" posY="488" physics="1" sound="1" action="false" />
 
   <!-- Sky objects -->
-  <tile name="star" posX="150" posY="100" physics="0" sound="1" action="false" />
+  <tile name="star" posX="642" posY="123" physics="0" sound="1" action="false" />
   <tile name="plant" posX="700" posY="420" physics="0" sound="1" action="false" />
   <tile name="fence" posX="100" posY="420" physics="0" sound="1" action="false" />
   <tile name="fence" posX="160" posY="420" physics="0" sound="1" action="false" />
   <tile name="fenceBroken" posX="220" posY="420" physics="0" sound="1" action="false" />
-  <tile name="boxItem" posX="740" posY="40" physics="2" sound="1" action="false" />
+  <tile name="boxItem" posX="400" posY="40" physics="2" sound="1" action="false" />
 
   <!-- Top right platform -->
   <tile name="grassCliffLeft" posX="600" posY="216" physics="1" sound="1" action="false" />
