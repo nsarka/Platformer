@@ -5,9 +5,9 @@ Platformer
 
 Art + music courtesy: http://open.commonly.cc/ http://www.kenney.nl/
 
-Rendering: https://www.libsdl.org/
+Rendering: https://www.libsdl.org/ v2.0.3
 
-Physics: http://box2d.org/
+Physics: http://box2d.org/ v2.3.0
 
 XML parsing: http://www.grinninglizard.com/tinyxml2/
 
